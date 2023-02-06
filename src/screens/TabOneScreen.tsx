@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import { StyleSheet, Pressable } from 'react-native';
 import { MotiView } from 'moti';
 import { Text } from '@components/Themed';
+import Button from 'src/components/Button';
 
 const Shape = () => {
   return (
@@ -35,6 +36,8 @@ const HelloWorld = () => {
       </Text>
 
       {visible && <Shape />}
+
+      <Button className="bg-slate-900 text-slate-100">Hello</Button>
     </Pressable>
   );
 };
