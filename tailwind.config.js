@@ -10,7 +10,7 @@ module.exports = {
       fontFamily: {
         aeonik: ['aeonik'],
         'aeonik-bold': ['aeonik-bold'],
-        'aeonik-air': ['aeonik-air'],
+        'aeonik-light': ['aeonik-light'],
       },
     },
   },

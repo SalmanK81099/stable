@@ -2,7 +2,8 @@ import React, { useReducer } from 'react';
 import { StyleSheet, Pressable } from 'react-native';
 import { MotiView } from 'moti';
 import { Text } from '@components/Themed';
-import Button from '@components/Button';
+import Button from '@stable/Button';
+import Input from '@stable/Input';
 
 const Shape = () => {
   return (
@@ -26,6 +27,8 @@ const Shape = () => {
 const HelloWorld = () => {
   const [visible, toggle] = useReducer(s => !s, true);
 
+  const [state, setState] = React.useState('');
+
   return (
     <Pressable
       onPress={toggle}
@@ -35,9 +38,14 @@ const HelloWorld = () => {
         Press me for a magic trick
       </Text>
 
-      {visible && <Shape />}
+      {/* {visible && <Shape />} */}
 
-      <Button className="bg-slate-900 text-slate-100">Hello</Button>
+      {/* <Button>Hello</Button> */}
+      <Input
+        placeholder="Enter your name"
+        value={state}
+        onChangeText={e => setState(e)}
+      />
     </Pressable>
   );
 };

@@ -18,7 +18,8 @@
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
       "@routes/*": ["src/navigation/*"],
-      "@layouts/*": ["layouts/*"]
+      "@layouts/*": ["layouts/*"],
+      "@stable/*": ["src/components/globals/*"],
     },
     
   },

@@ -28,6 +28,7 @@ module.exports = api => {
             '@constants': './src/constants',
             '@navigation': './src/navigation',
             '@layouts': './layouts',
+            '@stable': './src/components/globals',
           },
 
           extensions: ['.js', '.jsx', '.es', '.es6', '.mjs', '.ts', '.tsx'],
