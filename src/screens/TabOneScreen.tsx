@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import { StyleSheet, Pressable } from 'react-native';
 import { MotiView } from 'moti';
 import { Text } from '@components/Themed';
-import Button from 'src/components/Button';
+import Button from '@components/Button';
 
 const Shape = () => {
   return (

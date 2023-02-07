@@ -19,15 +19,15 @@ import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import ModalScreen from '../src/screens/ModalScreen';
-import NotFoundScreen from '../src/screens/NotFoundScreen';
-import TabOneScreen from '../src/screens/TabOneScreen';
-import TabTwoScreen from '../src/screens/TabTwoScreen';
+import ModalScreen from '../screens/ModalScreen';
+import NotFoundScreen from '../screens/NotFoundScreen';
+import TabOneScreen from '../screens/TabOneScreen';
+import TabTwoScreen from '../screens/TabTwoScreen';
 import {
   RootStackParamList,
   RootTabParamList,
   RootTabScreenProps,
-} from '../types';
+} from '../../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
 const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {

@@ -12,21 +12,21 @@ module.exports = api => {
       [
         'module-resolver',
         {
-          root: ['./'],
+          root: ['.'],
           alias: {
-            src: './src',
+            '@src': './src',
             '@utils': './utils',
-            '@hooks': './hooks',
+            '@hooks': './src/hooks',
             '@store': './store',
             '@actions': './store/actions',
             '@reducers': './store/reducers',
             '@types': './store/types',
-            '@screens': './screens',
+            '@screens': './src/screens',
             '@assets': './assets',
             '@styles': './styles',
             '@components': './src/components',
-            '@constants': './constants',
-            '@routes': './navigation',
+            '@constants': './src/constants',
+            '@navigation': './src/navigation',
             '@layouts': './layouts',
           },
 
