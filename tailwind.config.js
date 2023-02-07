@@ -6,7 +6,13 @@ module.exports = {
     './screens/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        aeonik: ['aeonik'],
+        'aeonik-bold': ['aeonik-bold'],
+        'aeonik-air': ['aeonik-air'],
+      },
+    },
   },
   plugins: [],
 };

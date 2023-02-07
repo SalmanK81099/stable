@@ -1,4 +1,5 @@
-import * as React from 'react';
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-undef */
 import renderer from 'react-test-renderer';
 
 import { MonoText } from '../StyledText';

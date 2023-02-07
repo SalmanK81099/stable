@@ -31,7 +31,7 @@ const HelloWorld = () => {
       onPress={toggle}
       className="flex-1 bg-slate-300 items-center justify-center"
     >
-      <Text className="text-2xl font-bold text-center text-slate-900 mb-4">
+      <Text className="text-2xl font-bold text-center text-slate-900 mb-4 font-aeonik">
         Press me for a magic trick
       </Text>
 
