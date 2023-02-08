@@ -4,6 +4,10 @@ import { MotiView } from 'moti';
 import { Text } from '@components/Themed';
 import Button from '@stable/Button';
 import Input from '@stable/Input';
+import Checkbox from '@stable/Checkbox';
+import Switch from '@stable/Switch';
+
+import TextInputMask from 'react-native-text-input-mask';
 
 const Shape = () => {
   return (
@@ -28,7 +32,8 @@ const HelloWorld = () => {
   const [visible, toggle] = useReducer(s => !s, true);
 
   const [state, setState] = React.useState('');
-
+  const [state2, setState2] = React.useState('');
+  const mask = '+1 ([000]) [000]-[0000]';
   return (
     <Pressable
       onPress={toggle}
@@ -41,11 +46,7 @@ const HelloWorld = () => {
       {/* {visible && <Shape />} */}
 
       {/* <Button>Hello</Button> */}
-      <Input
-        placeholder="Enter your name"
-        value={state}
-        onChangeText={e => setState(e)}
-      />
+      <Input password />
     </Pressable>
   );
 };
