@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /**
  * Learn more about deep linking with React Navigation
  * https://reactnavigation.org/docs/deep-linking
@@ -9,22 +10,28 @@ import * as Linking from 'expo-linking';
 
 import { RootStackParamList } from '../../types';
 
-const linking: LinkingOptions<RootStackParamList> = {
+export const userLinking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.createURL('/')],
   config: {
     screens: {
       Root: {
         screens: {
-          TabOne: {
-            screens: {
-              TabOneScreen: 'one',
-            },
+          Home: {
+            screens: {},
           },
-          TabTwo: {
-            screens: {
-              TabTwoScreen: 'two',
-            },
+          Account: {
+            screens: {},
           },
+          Card: {
+            screens: {},
+          },
+        },
+      },
+      Auth: {
+        screens: {
+          Signin: {},
+          Signup: {},
+          ForgotPassword: {},
         },
       },
       Modal: 'modal',
@@ -32,5 +39,3 @@ const linking: LinkingOptions<RootStackParamList> = {
     },
   },
 };
-
-export default linking;
