@@ -11,6 +11,7 @@ module.exports = {
         aeonik: ['aeonik'],
         'aeonik-bold': ['aeonik-bold'],
         'aeonik-light': ['aeonik-light'],
+        'aeonik-medium': ['aeonik-medium'],
       },
     },
   },

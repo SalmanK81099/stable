@@ -15,7 +15,7 @@ import MainStackTabs from './user/MainStack';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
-  const user = Math.random() > 0.5;
+  const user = true;
   return (
     <NavigationContainer
       linking={userLinking}

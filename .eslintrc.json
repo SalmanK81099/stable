@@ -48,7 +48,7 @@
       {
         "namedComponents": "arrow-function"
       }
-    ]
-    
+    ],
+    "react/no-unstable-nested-components": 0
   }
 }

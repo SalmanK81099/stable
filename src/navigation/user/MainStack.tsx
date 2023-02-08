@@ -25,6 +25,7 @@ const MainStackTabs = () => {
         tabBarActiveTintColor: Colors.light.textYellow,
         tabBarInactiveTintColor: Colors.light.textGray,
         tabBarLabelStyle: styles.tabBarLabelStyle,
+        headerShown: false,
       }}
     >
       <MainStack.Screen

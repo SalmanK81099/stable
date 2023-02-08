@@ -4,12 +4,12 @@ import { Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
 
 export {
-  widthPercentageToDP as wp,
   heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
 export const getRespValue = (percentage: number) => {
   //   console.log(width, height);
-  if (height > 800) return height * (percentage / 1000);
-  return (height + 60) * (percentage / 1000);
+  if (height > 800) return Math.round(height * (percentage / 1000));
+  return Math.round((height + 60) * (percentage / 1000));
 };
