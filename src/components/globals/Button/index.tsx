@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/jsx-props-no-spreading */
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { Button as ButtonPaper, ButtonProps } from 'react-native-paper';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, ButtonProps } from 'react-native-paper';
 
 interface MyButtonProps extends ButtonProps {
   buttonStyles?: any;
@@ -9,27 +9,45 @@ interface MyButtonProps extends ButtonProps {
 }
 
 const Button = (props: MyButtonProps) => {
-  const { buttonStyles, children, light, disabled, className, ...others } =
-    props;
+  const {
+    buttonStyles,
+    children,
+    loading,
+    light,
+    disabled,
+    className,
+    ...others
+  } = props;
+
   return (
-    <ButtonPaper
+    <Pressable
       {...others}
       style={{ ...styles, ...buttonStyles }}
-      className={`w-100 h-[70px] rounded-none   ${
+      className={`w-full h-[70px] rounded-none   ${
         light ? 'bg-[#FFF7C6]' : 'bg-[#EAB67D]'
       }  ${className} ${disabled ? 'bg-[#EFEFEF]' : ''}`}
     >
-      <View className="flex-row justify-between items-center h-full px-3">
-        <Text className={`font-aeonik text-xl ${disabled ? 'opacity-20' : ''}`}>
-          {children}
-        </Text>
-        <Image
-          // eslint-disable-next-line global-require
-          source={require('@assets/icons/arrow-right-black.png')}
-          className={`w-9 h-9 ${disabled ? 'opacity-20' : ''}`}
-        />
-      </View>
-    </ButtonPaper>
+      {loading ? (
+        <View className="flex w-full h-full items-center justify-center">
+          <ActivityIndicator size="small" color="#000" />
+        </View>
+      ) : (
+        <View className="flex-row justify-between items-center w-full h-full px-3">
+          <Text
+            className={`text-black font-aeonik text-xl ${
+              disabled ? 'opacity-20' : ''
+            }`}
+          >
+            {children}
+          </Text>
+          <Image
+            // eslint-disable-next-line global-require
+            source={require('@assets/icons/arrow-right-black.png')}
+            className={`w-9 h-9 ${disabled ? 'opacity-20' : ''}`}
+          />
+        </View>
+      )}
+    </Pressable>
   );
 };
 

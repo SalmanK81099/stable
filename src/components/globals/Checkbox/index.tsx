@@ -1,11 +1,50 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { StyleSheet, Text, View } from 'react-native';
+import Colors from '@src/constants/Colors';
+import { getRespValue } from '@utils/design/design';
+import { Checkbox as CheckboxDef, ICheckboxProps } from 'native-base';
 import React from 'react';
-import { Checkbox as CheckboxPaper, CheckboxProps } from 'react-native-paper';
+import { Text, View } from 'react-native';
 
-const Checkbox = (props: CheckboxProps) => {
-  return <CheckboxPaper {...props} />;
+interface MyCheckboxProps extends ICheckboxProps {
+  label?: any;
+  size?: 'sm' | 'md' | 'lg';
+}
+const Checkbox = (props: MyCheckboxProps) => {
+  const { className, value, size, label, ...others } = props;
+
+  return (
+    <View
+      style={{
+        height: getRespValue(70),
+      }}
+      className={`flex-row justify-center items-center px-4 ${className}`}
+    >
+      <CheckboxDef
+        {...others}
+        style={{
+          borderColor: '#000',
+          borderWidth: 1,
+          backgroundColor:
+            value === 'on' ? '#000' : Colors.light.theme.darkYellow,
+        }}
+        value={value}
+        color="#fff"
+        size={size}
+      />
+      <Text
+        style={{
+          fontSize: getRespValue(14),
+        }}
+        className="ml-4 font-aeonik  text-black"
+      >
+        {label}
+      </Text>
+    </View>
+  );
 };
 
 export default Checkbox;
-const styles = StyleSheet.create({});
+Checkbox.defaultProps = {
+  label: '',
+  size: 'md',
+};

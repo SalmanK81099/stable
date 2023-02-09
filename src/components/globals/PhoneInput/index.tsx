@@ -63,6 +63,8 @@ const PhoneInput = (props: Props) => {
           width: '100%',
           height: getRespValue(70),
           backgroundColor: '#FDEEA4',
+          borderBottomColor: '#fff',
+          borderBottomWidth: getRespValue(2),
           paddingHorizontal: getRespValue(20),
           ...(style as object),
         }}

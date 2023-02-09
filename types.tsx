@@ -8,7 +8,10 @@ import {
   CompositeScreenProps,
   NavigatorScreenParams,
 } from '@react-navigation/native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -34,10 +37,15 @@ export type RootTabParamList = {
 };
 
 export type AuthStackParamList = {
+  Welcome: undefined;
   Signin: undefined;
   Signup: undefined;
   ForgotPassword: undefined;
 };
+
+export interface AuthProps {
+  navigation: NativeStackNavigationProp<AuthStackParamList>;
+}
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
   CompositeScreenProps<

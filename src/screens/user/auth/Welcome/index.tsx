@@ -1,27 +1,19 @@
 import Button from '@src/components/globals/Button';
-import Checkbox from '@src/components/globals/Checkbox';
-import Input from '@src/components/globals/Input';
 import MotiView from '@src/components/globals/MotiView';
-import PhoneInput from '@src/components/globals/PhoneInput';
 import Screen from '@src/components/globals/Screen';
-import Switch from '@src/components/globals/Switch';
 import Colors from '@src/constants/Colors';
 import { getRespValue } from '@utils/design/design';
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { AuthProps } from 'types';
 
-const Signup = ({ navigation }: AuthProps) => {
-  const [toggleIsOn, setToggle] = useState(false);
-  const [checkIsOn, setCheck] = useState('off');
-
+const Welcome = ({ navigation }: AuthProps) => {
   return (
     <Screen
       className={`bg-[${Colors.light.theme.yellow}]`}
       topColor={Colors.light.theme.yellow}
     >
       <MotiView
-        key={1}
         from={{
           opacity: 0,
           translateX: -100,
@@ -38,7 +30,7 @@ const Signup = ({ navigation }: AuthProps) => {
             }}
             className="font-aeonik w-3/4"
           >
-            Let&apos;s create your account
+            Welcome to Stable
           </Text>
           <Text
             style={{
@@ -46,16 +38,15 @@ const Signup = ({ navigation }: AuthProps) => {
             }}
             className="font-aeonik pt-4 pb-4"
           >
-            Please complete the information below
+            Let&apos;s get started!
           </Text>
         </View>
       </MotiView>
 
       <View
-        className={`bg-[${Colors.light.theme.darkYellow}] h-full flex-1 w-full flex-col items-start justify-start`}
+        className={`bg-[${Colors.light.theme.darkYellow}] h-full flex-1 w-full flex-col items-end justify-end`}
       >
         <MotiView
-          key={2}
           from={{
             opacity: 0,
             translateY: 100,
@@ -67,34 +58,20 @@ const Signup = ({ navigation }: AuthProps) => {
           style={{
             backgroundColor: Colors.light.theme.darkYellow,
           }}
-          className="bg-none h-full flex-1 w-full flex-col items-start justify-start"
+          className="bg-none h-full flex-1 w-full flex-col items-end justify-end"
         >
-          <Input placeholder="Name" />
-          <Input placeholder="Email" />
-          <PhoneInput placeholder="Enter phone Number" />
-          <Input placeholder="Create Password" password />
-          <Switch
-            isOn={toggleIsOn}
-            onToggle={() => {
-              setToggle(!toggleIsOn);
-            }}
-            label="Enable face ID"
-          />
-          <Checkbox
-            className="mt-auto"
-            label="I agree to the Terms of Service and Privacy Policy"
-            value={checkIsOn}
-            onChange={() => {
-              setCheck(preVal => (preVal === 'on' ? 'off' : 'on'));
-            }}
-          />
-          <Button>Continue</Button>
+          <Button onPress={() => navigation.navigate('Signup')}>
+            Create my account
+          </Button>
+          <Button light onPress={() => navigation.navigate('Signin')}>
+            Login
+          </Button>
         </MotiView>
       </View>
     </Screen>
   );
 };
 
-export default Signup;
+export default Welcome;
 
 const styles = StyleSheet.create({});
