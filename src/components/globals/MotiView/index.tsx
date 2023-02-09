@@ -9,9 +9,12 @@ const MotiView = (props: MotiProps<ViewStyle> & ViewProps) => {
       {...rest}
       className={className}
       exit={{
-        opacity: 0,
-        translateX: -100,
+        scale: 0.3,
         ...(exit as object),
+      }}
+      exitTransition={{
+        type: 'timing',
+        duration: 500,
       }}
       transition={{
         type: 'timing',

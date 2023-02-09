@@ -16,11 +16,11 @@ const Welcome = ({ navigation }: AuthProps) => {
       <MotiView
         from={{
           opacity: 0,
-          translateX: -100,
+          translateY: -100,
         }}
         animate={{
           opacity: 1,
-          translateX: 0,
+          translateY: 0,
         }}
       >
         <View className="px-4 pt-8 pb-8">
