@@ -10,7 +10,7 @@ const Checkbox = (props: MyCheckboxProps) => {
   const [checked, setChecked] = React.useState(false);
   const { label, ...others } = props;
   return (
-    <View className="flex-row justify-between items-center ">
+    <View className="flex-row justify-items-start items-center p-4 bg-[#FDEEA4] ">
       <CheckboxPaper
         {...others}
         status={checked ? 'checked' : 'unchecked'}
@@ -18,7 +18,7 @@ const Checkbox = (props: MyCheckboxProps) => {
           setChecked(!checked);
         }}
       />
-      <Text className="font-aeonik text-xs text-black">{label}</Text>
+      <Text className="  font-aeonik text-[7px] text-black">{label}</Text>
     </View>
   );
 };

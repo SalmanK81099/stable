@@ -11,14 +11,16 @@ const Switch = (props: MySwitchProps) => {
   const { label, ...others } = props;
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
   return (
-    <View className="flex-row justify-between items-center ">
+    <View className="w-96 flex-row justify-items-start items-center p-4 bg-[#FDEEA4] gap-2">
       <SwitchPaper
         {...others}
         value={isSwitchOn}
         onValueChange={onToggleSwitch}
         color="black"
       />
-      <Text className="font-aeonik text-xl text-black ">{label}</Text>
+      <Text className="font-aeonik text-sm text-black items-center">
+        {label}
+      </Text>
     </View>
   );
 };
