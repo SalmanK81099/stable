@@ -15,6 +15,6 @@ export const animationConfig = {
   transition: {
     type: 'timing',
     delay: 100,
-    duration: 500,
+    duration: 300,
   },
 };

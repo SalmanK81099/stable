@@ -13,6 +13,7 @@ export default {
     theme: {
       yellow: '#FFF7C6',
       darkYellow: '#FDEEA4',
+      moreDarkYellow: '#E8DB9E',
     },
   },
   dark: {

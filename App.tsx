@@ -9,11 +9,11 @@ import { persistor, store } from '@store/store';
 import { NativeBaseProvider } from 'native-base';
 import { Provider } from 'react-redux';
 
-// import { LogBox } from 'react-native';
+import { LogBox } from 'react-native';
 
-// LogBox.ignoreLogs(['Warning: ...']); // Hide warnings
+LogBox.ignoreLogs(['Warning: ...']); // Hide warnings
 
-// LogBox.ignoreAllLogs(); // Hide all warning notifications on front-end
+LogBox.ignoreAllLogs(); // Hide all warning notifications on front-end
 
 const App = () => {
   const isLoadingComplete = useCachedResources();

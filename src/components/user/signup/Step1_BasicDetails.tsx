@@ -29,22 +29,12 @@ const Step1_BasicDetails = ({ next }: MultiStepFormProps) => {
       <MotiView
         key="createAccount"
         {...(animationConfig as object)}
-        from={{
-          opacity: 0,
-          translateY: -100,
-        }}
-        animate={{
-          opacity: 1,
-          translateY: 0,
-        }}
         exit={{
           opacity: 0,
           translateY: -100,
         }}
-        transition={{
-          type: 'timing',
-          delay: 100,
-          duration: 500,
+        style={{
+          height: getRespValue(300),
         }}
       >
         <View className="px-4 pt-8 pb-8">
@@ -73,6 +63,10 @@ const Step1_BasicDetails = ({ next }: MultiStepFormProps) => {
         <MotiView
           key="createAccountDetails"
           {...(animationConfig as object)}
+          from={{
+            opacity: 0,
+            translateY: 100,
+          }}
           exit={{
             opacity: 0,
             translateY: 100,

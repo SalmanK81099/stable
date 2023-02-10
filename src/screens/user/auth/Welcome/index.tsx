@@ -22,8 +22,11 @@ const Welcome = ({ navigation }: AuthProps) => {
           opacity: 1,
           translateY: 0,
         }}
+        style={{
+          height: getRespValue(300),
+        }}
       >
-        <View className="px-4 pt-8 pb-8">
+        <View className="px-4 pt-8 pb-8 ">
           <Text
             style={{
               fontSize: getRespValue(45),
@@ -43,9 +46,7 @@ const Welcome = ({ navigation }: AuthProps) => {
         </View>
       </MotiView>
 
-      <View
-        className={`bg-[${Colors.light.theme.darkYellow}] h-full flex-1 w-full flex-col items-end justify-end`}
-      >
+      <View className="flex-1 w-full flex-col items-end justify-end">
         <MotiView
           from={{
             opacity: 0,

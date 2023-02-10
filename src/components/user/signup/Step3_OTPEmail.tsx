@@ -13,7 +13,7 @@ import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // eslint-disable-next-line camelcase
-const Step2_OTP = ({ back, next }: MultiStepFormProps) => {
+const Step3_OTPEmail = ({ back, next }: MultiStepFormProps) => {
   const [secondsLeft, setSecondsLeft] = useState(30);
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const Step2_OTP = ({ back, next }: MultiStepFormProps) => {
             }}
             className="font-aeonik "
           >
-            Verify your number
+            Verify your email
           </Text>
           <Text
             style={{
@@ -84,7 +84,7 @@ const Step2_OTP = ({ back, next }: MultiStepFormProps) => {
             }}
             className="font-aeonik pt-4 pb-4"
           >
-            Enter the 6-digit code we sent to your phone number
+            Enter the 6-digit code we sent to your email
           </Text>
         </View>
       </MotiView>
@@ -145,6 +145,6 @@ const Step2_OTP = ({ back, next }: MultiStepFormProps) => {
   );
 };
 
-export default Step2_OTP;
+export default Step3_OTPEmail;
 
 const styles = StyleSheet.create({});
