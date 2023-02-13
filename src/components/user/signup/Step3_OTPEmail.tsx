@@ -2,10 +2,10 @@
 /* eslint-disable camelcase */
 import cheveronLeft from '@assets/icons/chevron-left-black.png';
 import Button from '@src/components/globals/Button';
+import OTP from '@src/components/globals/OTP';
 import Screen from '@src/components/globals/Screen';
 import Colors from '@src/constants/Colors';
 import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
-import OTPInputView from '@twotalltotems/react-native-otp-input';
 import { animationConfig } from '@utils/animation/animation';
 import { getRespValue } from '@utils/design/design';
 import { MotiView } from 'moti';
@@ -111,22 +111,7 @@ const Step3_OTPEmail = ({ back, next }: MultiStepFormProps) => {
             }}
             className="pt-6"
           >
-            <OTPInputView
-              pinCount={6}
-              style={{
-                height: getRespValue(100),
-                width: '90%',
-              }}
-              codeInputFieldStyle={{
-                borderWidth: 0,
-                color: '#000',
-                fontSize: getRespValue(30),
-                fontFamily: 'aeonik',
-                height: getRespValue(78),
-                backgroundColor: Colors.light.theme.moreDarkYellow,
-              }}
-              onCodeFilled={() => next && next()}
-            />
+            <OTP onCodeFilled={() => next && next()} />
 
             <Text
               style={{
