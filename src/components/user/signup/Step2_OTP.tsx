@@ -2,10 +2,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable camelcase */
 import cheveronLeft from '@assets/icons/chevron-left-black.png';
-import Button from '@src/components/globals/Button';
 import OTP from '@src/components/globals/OTP';
 import Screen from '@src/components/globals/Screen';
 import Toast from '@src/components/globals/Toast';
+import BottomSheetButtonOTP from '@src/components/user/BottomSheetButtonOTP';
 import Colors from '@src/constants/Colors';
 import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
 import { animationConfig } from '@utils/animation/animation';
@@ -147,7 +147,7 @@ const Step2_OTP = ({ back, next }: MultiStepFormProps) => {
               {secondsLeft > 10 ? secondsLeft : `0${secondsLeft}`}
             </Text>
           </View>
-          <Button>Didn&rsquo;t recieve the code?</Button>
+          <BottomSheetButtonOTP title="Didn't receive the code?" />
         </MotiView>
       </View>
     </Screen>

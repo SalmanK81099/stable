@@ -7,6 +7,7 @@ import useColorScheme from '@hooks/useColorScheme';
 import Navigation from '@src/navigation';
 import { persistor, store } from '@store/store';
 import { NativeBaseProvider } from 'native-base';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 
 import { LogBox } from 'react-native';
@@ -24,10 +25,12 @@ const App = () => {
   }
   return (
     <SafeAreaProvider>
-      <NativeBaseProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </NativeBaseProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <NativeBaseProvider>
+          <Navigation colorScheme={colorScheme} />
+          <StatusBar />
+        </NativeBaseProvider>
+      </GestureHandlerRootView>
     </SafeAreaProvider>
   );
 };

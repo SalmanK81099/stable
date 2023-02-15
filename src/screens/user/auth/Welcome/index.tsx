@@ -1,3 +1,4 @@
+import LogoSmallSVG from '@assets/logo-small.svg';
 import Button from '@src/components/globals/Button';
 import MotiView from '@src/components/globals/MotiView';
 import Screen from '@src/components/globals/Screen';
@@ -59,8 +60,15 @@ const Welcome = ({ navigation }: AuthProps) => {
           style={{
             backgroundColor: Colors.light.theme.darkYellow,
           }}
-          className="bg-none h-full flex-1 w-full flex-col items-end justify-end"
+          className="bg-none h-full flex-1 w-full flex-col items-center justify-end"
         >
+          <LogoSmallSVG
+            style={{
+              width: getRespValue(110),
+              height: getRespValue(30),
+              marginBottom: getRespValue(30),
+            }}
+          />
           <Button onPress={() => navigation.navigate('Signup')}>
             Create my account
           </Button>

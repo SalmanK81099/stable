@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable camelcase */
 import cheveronLeft from '@assets/icons/chevron-left-black.png';
+import BottomSheetRef from '@gorhom/bottom-sheet';
 import Button from '@src/components/globals/Button';
 import OTP from '@src/components/globals/OTP';
 import Screen from '@src/components/globals/Screen';
@@ -9,12 +10,13 @@ import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
 import { animationConfig } from '@utils/animation/animation';
 import { getRespValue } from '@utils/design/design';
 import { MotiView } from 'moti';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // eslint-disable-next-line camelcase
 const Step3_OTPEmail = ({ back, next }: MultiStepFormProps) => {
   const [secondsLeft, setSecondsLeft] = useState(30);
+  const bottomSheetRef = useRef<BottomSheetRef>();
 
   useEffect(() => {
     if (secondsLeft === 0) return;
@@ -123,7 +125,13 @@ const Step3_OTPEmail = ({ back, next }: MultiStepFormProps) => {
               {secondsLeft > 10 ? secondsLeft : `0${secondsLeft}`}
             </Text>
           </View>
-          <Button>Didn&rsquo;t recieve the code?</Button>
+          <Button
+            onPress={() => {
+              bottomSheetRef.current?.expand();
+            }}
+          >
+            Didn&rsquo;t recieve the code?
+          </Button>
         </MotiView>
       </View>
     </Screen>

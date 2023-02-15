@@ -3,6 +3,7 @@
     "name": "stable",
     "slug": "stable",
     "version": "1.0.0",
+    "owner": "stable_app",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "stable",
@@ -27,7 +28,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.st.stable"
+      "package": "com.st.stable",
+      "softwareKeyboardLayoutMode": "pan"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
@@ -37,7 +39,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "fd53df19-eca1-456b-a140-2add812f045f"
+        "projectId": "4e4aa1fc-5467-4d5e-a5dd-dcccdc2c2381"
       }
     }
   }
