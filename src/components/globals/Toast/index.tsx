@@ -17,7 +17,7 @@ import React from 'react';
 import ErrorIconSVG from '@assets/icons/toast/error.svg';
 
 type ToastProps = {
-  id: number;
+  id: number | string;
   status?: any;
   variant?: string;
   title?: string;
@@ -41,7 +41,7 @@ const Toast = ({
   return (
     <Alert
       maxWidth="100%"
-      height={getRespValue(90)}
+      minHeight={getRespValue(90)}
       alignSelf="center"
       background={error ? 'black' : 'white'}
       flexDirection="row"
@@ -59,7 +59,11 @@ const Toast = ({
           <HStack space={2} flexShrink={1} alignItems="center">
             {error && (
               <ErrorIconSVG
-                style={{ width: getRespValue(40), height: getRespValue(40) }}
+                style={{
+                  width: getRespValue(40),
+                  height: getRespValue(40),
+                  marginRight: getRespValue(10),
+                }}
               />
             )}
 
@@ -67,7 +71,7 @@ const Toast = ({
               fontWeight="medium"
               flexShrink={1}
               fontFamily="aeonik"
-              fontSize={getRespValue(20)}
+              fontSize={getRespValue(18)}
               color={
                 variant === 'solid'
                   ? 'lightText'
@@ -82,7 +86,7 @@ const Toast = ({
           {isClosable ? (
             <IconButton
               variant="unstyled"
-              icon={<CloseIcon size="3" />}
+              icon={<CloseIcon size="4" />}
               _icon={{
                 color: variant === 'solid' ? 'lightText' : 'darkText',
               }}

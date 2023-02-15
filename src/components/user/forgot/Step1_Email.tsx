@@ -2,21 +2,23 @@
 /* eslint-disable camelcase */
 import Button from '@src/components/globals/Button';
 import Input from '@src/components/globals/Input';
-import LinkText from '@src/components/globals/LinkText';
+import Modal from '@src/components/globals/Modal';
 // import MotiView from '@src/components/globals/MotiView';
 
 import Screen from '@src/components/globals/Screen';
 import Colors from '@src/constants/Colors';
-import useMyToast from '@src/hooks/useToasty';
+import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
 import { animationConfig } from '@utils/animation/animation';
 import { getRespValue } from '@utils/design/design';
 import { MotiView } from 'moti';
+import { useToast } from 'native-base';
+import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 // eslint-disable-next-line camelcase
-const Signin = () => {
-  // const toast = useToast();
-  const toast = useMyToast();
+const Step1_Email = ({ next }: MultiStepFormProps) => {
+  const toast = useToast();
+  const [showModal, setShowModal] = useState(false);
   return (
     <Screen
       className={`bg-[${Colors.light.theme.yellow}]`}
@@ -33,6 +35,31 @@ const Signin = () => {
           height: getRespValue(300),
         }}
       >
+        <Modal
+          ok
+          visible={showModal}
+          setVisible={setShowModal}
+          onOk={() => {
+            if (next) next();
+          }}
+        >
+          <Text
+            className="text-center p-4 font-aeonik"
+            style={{
+              fontSize: getRespValue(18),
+            }}
+          >
+            We sent you a link to reset your password to:{' '}
+            <Text
+              className="text-center p-4 font-aeonik-bold"
+              style={{
+                fontSize: getRespValue(18),
+              }}
+            >
+              erikatorres@gmail.com
+            </Text>
+          </Text>
+        </Modal>
         <View className="px-4 pt-8 pb-8">
           <Text
             style={{
@@ -40,15 +67,8 @@ const Signin = () => {
             }}
             className="font-aeonik w-3/4"
           >
-            Welcome back to Stable
-          </Text>
-          <Text
-            style={{
-              fontSize: getRespValue(30),
-            }}
-            className="font-aeonik pt-4 pb-4 w-3/4"
-          >
-            Enter your account information
+            Enter your email and we&apos;ll send you a link to reset your
+            password
           </Text>
         </View>
       </MotiView>
@@ -74,17 +94,13 @@ const Signin = () => {
         >
           <View className="flex-1 w-full">
             <Input placeholder="Email" />
-            <Input placeholder="Password" password />
-            <LinkText to="ForgotPassword">Forgot your password?</LinkText>
           </View>
           <Button
             onPress={() => {
-              toast.error(
-                "The email and password you enter didn't match. Please double-check and try again.",
-              );
+              setShowModal(true);
             }}
           >
-            Login
+            Reset Password
           </Button>
         </MotiView>
       </View>
@@ -92,6 +108,6 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Step1_Email;
 
 const styles = StyleSheet.create({});

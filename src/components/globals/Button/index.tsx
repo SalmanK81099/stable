@@ -1,11 +1,19 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/jsx-props-no-spreading */
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
-import { ActivityIndicator, ButtonProps } from 'react-native-paper';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  View,
+} from 'react-native';
+import { ActivityIndicator } from 'react-native-paper';
 
-interface MyButtonProps extends ButtonProps {
+interface MyButtonProps extends TouchableOpacityProps {
   buttonStyles?: any;
   light?: boolean;
+  loading?: boolean;
 }
 
 const Button = (props: MyButtonProps) => {
@@ -20,7 +28,7 @@ const Button = (props: MyButtonProps) => {
   } = props;
 
   return (
-    <Pressable
+    <TouchableOpacity
       {...others}
       style={{ ...styles, ...buttonStyles }}
       className={`w-full h-[70px] rounded-none   ${
@@ -47,7 +55,7 @@ const Button = (props: MyButtonProps) => {
           />
         </View>
       )}
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 
@@ -56,6 +64,7 @@ export default Button;
 Button.defaultProps = {
   buttonStyles: {},
   light: false,
+  loading: false,
 };
 
 const styles = StyleSheet.create({});
