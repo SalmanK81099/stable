@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import Colors from '@src/constants/Colors';
 import { getRespValue } from '@utils/design/design';
 import React, { useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-
 import CountryPicker, {
   CountryCode,
   DARK_THEME,
@@ -14,6 +14,7 @@ import PhoneInputDef, {
 interface Props extends ReactNativePhoneInputProps {
   style?: object;
   placeholder?: string;
+  error?: boolean;
   theme?: typeof DARK_THEME;
 }
 
@@ -25,6 +26,7 @@ const PhoneInput = (props: Props) => {
     flagStyle,
     initialCountry,
     style,
+    error,
     theme,
     ...rest
   } = props;
@@ -62,7 +64,9 @@ const PhoneInput = (props: Props) => {
         style={{
           width: '100%',
           height: getRespValue(70),
-          backgroundColor: '#FDEEA4',
+          backgroundColor: error
+            ? Colors.light.theme.redError
+            : Colors.light.theme.darkYellow,
           borderBottomColor: '#fff',
           borderBottomWidth: getRespValue(2),
           paddingHorizontal: getRespValue(20),
@@ -93,6 +97,7 @@ const PhoneInput = (props: Props) => {
 PhoneInput.defaultProps = {
   style: {},
   placeholder: '',
+  error: false,
   theme: DARK_THEME,
 };
 

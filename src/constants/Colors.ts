@@ -14,6 +14,10 @@ export default {
       yellow: '#FFF7C6',
       darkYellow: '#FDEEA4',
       moreDarkYellow: '#E8DB9E',
+      redError: '#E54F60',
+      darkGreen: '#7DCCA1',
+      lightGreen: '#D0FFE6',
+      white: '#EFEFEF',
     },
   },
   dark: {
