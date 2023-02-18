@@ -50,12 +50,13 @@ const Modal = (props: MyModalProps) => {
         {children}
         {ok && (
           <Button
+            buttonType="simple"
             onPress={() => {
               setVisible(false);
               if (onOk) onOk();
             }}
           >
-            Ok
+            Okay
           </Button>
         )}
       </ModalDef.Content>

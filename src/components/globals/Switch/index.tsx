@@ -22,6 +22,7 @@ interface Props extends SwitchProps {
   labelStyle?: object;
   isOn?: boolean;
   onToggle?: ((event: GestureResponderEvent) => void) | undefined;
+  toggleStyles?: object;
 }
 
 const Toggle = (props: Props) => {
@@ -32,7 +33,16 @@ const Toggle = (props: Props) => {
     outputRange: [0, 16],
   });
 
-  const { isOn, onColor, offColor, style, onToggle, labelStyle, label } = props;
+  const {
+    isOn,
+    onColor,
+    offColor,
+    style,
+    onToggle,
+    labelStyle,
+    label,
+    toggleStyles,
+  } = props;
 
   // const color = isOn ? onColor : offColor;
 
@@ -67,6 +77,7 @@ const Toggle = (props: Props) => {
                 {
                   marginLeft: moveToggle,
                 },
+                { ...toggleStyles },
               ]}
             />
           </View>

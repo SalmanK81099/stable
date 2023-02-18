@@ -14,6 +14,16 @@ import cardActive from '@assets/icons/bottom-tabs/card-active.png';
 import card from '@assets/icons/bottom-tabs/card.png';
 import homeActive from '@assets/icons/bottom-tabs/home-active.png';
 import home from '@assets/icons/bottom-tabs/home.png';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Add from '@src/screens/user/main/Account/Add';
+import Movements from '@src/screens/user/main/Account/Movements';
+import Send from '@src/screens/user/main/Account/Send';
+import Profile from '@src/screens/user/main/Profile';
+import AccountInfo from '@src/screens/user/main/Profile/AccountInfo';
+import Cashout from '@src/screens/user/main/Profile/CashOut';
+import Currencies from '@src/screens/user/main/Profile/Currencies';
+import Legal from '@src/screens/user/main/Profile/Legal';
+import Support from '@src/screens/user/main/Profile/Suppoort';
 
 const MainStack = createBottomTabNavigator<RootTabParamList>();
 const MainStackTabs = () => {
@@ -44,7 +54,7 @@ const MainStackTabs = () => {
       />
       <MainStack.Screen
         name="Account"
-        component={Account}
+        component={AccountStack}
         options={() => ({
           // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({ focused }) => (
@@ -61,7 +71,6 @@ const MainStackTabs = () => {
         component={Card}
         options={() => ({
           // eslint-disable-next-line react/no-unstable-nested-components
-
           tabBarIcon: ({ focused }) => (
             <Image
               source={focused ? cardActive : card}
@@ -71,7 +80,55 @@ const MainStackTabs = () => {
           ),
         })}
       />
+
+      {/* Hidden Tab */}
+      <MainStack.Screen
+        name="Profile"
+        component={ProfileStack}
+        options={() => ({
+          // eslint-disable-next-line react/no-unstable-nested-components
+          tabBarStyle: { display: 'none' },
+          tabBarButton: () => null,
+          unmountOnBlur: true,
+        })}
+      />
     </MainStack.Navigator>
+  );
+};
+
+const Stack = createNativeStackNavigator();
+
+const AccountStack = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Account"
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="Account" component={Account} />
+      <Stack.Screen name="Send" component={Send} />
+      <Stack.Screen name="Add" component={Add} />
+      <Stack.Screen name="Movements" component={Movements} />
+    </Stack.Navigator>
+  );
+};
+
+const ProfileStack = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Profile"
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="AccountInfo" component={AccountInfo} />
+      <Stack.Screen name="CashOut" component={Cashout} />
+      <Stack.Screen name="Currencies" component={Currencies} />
+      <Stack.Screen name="Support" component={Support} />
+      <Stack.Screen name="Legal" component={Legal} />
+    </Stack.Navigator>
   );
 };
 

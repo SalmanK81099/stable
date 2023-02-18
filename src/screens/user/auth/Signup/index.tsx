@@ -5,7 +5,6 @@ import Step2_OTP from '@src/components/user/signup/Step2_OTP';
 import Step3_OTPEmail from '@src/components/user/signup/Step3_OTPEmail';
 import Step4_Done from '@src/components/user/signup/Step4_Done';
 import useMultistepForm from '@src/hooks/useMultiStepForm';
-import { AnimatePresence } from 'moti';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { AuthProps } from 'types';
@@ -18,7 +17,7 @@ const Signup = ({ navigation }: AuthProps) => {
     <Step4_Done />,
   ]);
 
-  return <AnimatePresence exitBeforeEnter>{step}</AnimatePresence>;
+  return step;
 };
 
 export default Signup;

@@ -31,6 +31,7 @@
     "expo-clipboard": "~4.0.1",
     "expo-community-flipper": "^47.0.0",
     "expo-constants": "~14.0.2",
+    "expo-contacts": "~11.0.1",
     "expo-dev-client": "~2.0.1",
     "expo-font": "~11.0.1",
     "expo-linking": "~3.3.0",

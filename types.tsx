@@ -34,6 +34,7 @@ export type RootTabParamList = {
   Home: undefined;
   Account: undefined;
   Card: undefined;
+  Profile: undefined;
 };
 
 export type AuthStackParamList = {
