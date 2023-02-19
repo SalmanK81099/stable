@@ -30,6 +30,7 @@ const Account = ({ navigation }: any) => {
       whiteScan
       style={{ backgroundColor: Colors.light.background }}
       topColor={Colors.light.background}
+      disableBottomSafeArea
     >
       <View className="flex-1 justify-between flex-col">
         <View className="items-center justify-center h-1/2">

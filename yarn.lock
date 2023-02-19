@@ -9970,6 +9970,11 @@ react-native-otp-verify@^1.1.4:
   resolved "https://registry.yarnpkg.com/react-native-otp-verify/-/react-native-otp-verify-1.1.4.tgz#0be6170034298cbcba77747c63bf5eb30f07cb3f"
   integrity sha512-bgfEinDSnjlKEHwp7mB4ejU9hV3ObQvn5ML670OKPhdMn8iuOouPHrlcnrNf/VSSE/74QCTSiqGMZfca165jrw==
 
+react-native-pager-view@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-pager-view/-/react-native-pager-view-6.0.1.tgz#353abf38d3c2b91ed7c586f10af0f94700f5b1dc"
+  integrity sha512-kOVNu+4JnR3Gpykviy4WbOAnQz8TgP6O2pRvne221oPUDQLYrvEE/FINR0P85TxbMgvKTPlLejGw0ZHQbezK/g==
+
 react-native-paper@^5.1.4:
   version "5.1.4"
   resolved "https://registry.npmjs.org/react-native-paper/-/react-native-paper-5.1.4.tgz"
@@ -9988,10 +9993,10 @@ react-native-phone-input@^1.3.5:
     lodash "^4.17.21"
     prop-types "^15.8.1"
 
-react-native-reanimated@~2.8.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.8.0.tgz#93c06ca84d91fb3865110b0857c49a24e316130e"
-  integrity sha512-kJvf/UWLBMaGCs9X66MKq5zdFMgwx8D0nHnolbHR7s8ZnbLdb7TlQ/yuzIXqn/9wABfnwtNRI3CyaP1aHWMmZg==
+react-native-reanimated@~2.12.0:
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.12.0.tgz#5821eecfb1769b1617a67a2d4dec12fdeedb2b6e"
+  integrity sha512-nrlPyw+Hx9u4iJhZk9PoTvDo/QmVAd+bo7OK9Tv3hveNEF9++5oig/g3Uv9V93shy9avTYGsUprUvAEt/xdzeQ==
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.16.7"
     "@babel/preset-typescript" "^7.16.7"
@@ -10035,6 +10040,13 @@ react-native-svg@13.4.0:
   dependencies:
     css-select "^5.1.0"
     css-tree "^1.1.3"
+
+react-native-tab-view@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-3.5.0.tgz#eee4af05708578a1a0c6bcd2c98bf9f204778cc6"
+  integrity sha512-Dvvs54zPtI4f8x6GuTGy4VUMeMSnmjQFa0PsJkogWuRnxcYT+CunCDMOvxzSesh2AbL6UaTNPmTQ0Le9ybYsHg==
+  dependencies:
+    use-latest-callback "^0.1.5"
 
 react-native-web@~0.18.9:
   version "0.18.10"

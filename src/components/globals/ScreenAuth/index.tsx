@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import AppBar, { AppBarProps } from '@src/components/user/AppBar';
+import { getRespValue } from '@utils/design/design';
 import React from 'react';
 import {
   ScrollView,
@@ -47,11 +48,15 @@ const ScreenAuth = (props: Props) => {
         edges={['top']}
         style={{
           backgroundColor: topColor,
+          minHeight: getRespValue(70),
         }}
       />
       <SafeAreaView
         edges={disableBottomSafeArea ? ['right'] : ['bottom']}
-        style={{ flex: 1, backgroundColor: bottomColor }}
+        style={{
+          flex: 1,
+          backgroundColor: bottomColor,
+        }}
         className="flex-1"
       >
         <ViewDef
