@@ -14,7 +14,7 @@ import cardActive from '@assets/icons/bottom-tabs/card-active.png';
 import card from '@assets/icons/bottom-tabs/card.png';
 import homeActive from '@assets/icons/bottom-tabs/home-active.png';
 import home from '@assets/icons/bottom-tabs/home.png';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import Add from '@src/screens/user/main/Account/Add';
 import Movements from '@src/screens/user/main/Account/Movements';
 import Send from '@src/screens/user/main/Account/Send';
@@ -89,14 +89,13 @@ const MainStackTabs = () => {
           // eslint-disable-next-line react/no-unstable-nested-components
           tabBarStyle: { display: 'none' },
           tabBarButton: () => null,
-          unmountOnBlur: true,
         })}
       />
     </MainStack.Navigator>
   );
 };
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 const AccountStack = () => {
   return (

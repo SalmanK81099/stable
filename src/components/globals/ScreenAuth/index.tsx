@@ -15,6 +15,7 @@ interface Props extends ViewProps {
   bottomColor?: string;
   whiteScan?: boolean;
   appBarProps?: AppBarProps;
+  disableBottomSafeArea?: boolean;
 }
 
 const ScreenAuth = (props: Props) => {
@@ -27,6 +28,7 @@ const ScreenAuth = (props: Props) => {
     style,
     appBarProps,
     whiteScan,
+    disableBottomSafeArea,
     ...rest
   } = props;
 
@@ -48,13 +50,14 @@ const ScreenAuth = (props: Props) => {
         }}
       />
       <SafeAreaView
-        edges={['bottom']}
+        edges={disableBottomSafeArea ? ['right'] : ['bottom']}
         style={{ flex: 1, backgroundColor: bottomColor }}
+        className="flex-1"
       >
         <ViewDef
           {...rest}
           style={{ flex: 1, ...(style as object) }}
-          className={className}
+          className={`flex-1 ${className}`}
         >
           <AppBar {...appBarProps} whiteScan={whiteScan} />
           {children}
@@ -70,6 +73,7 @@ ScreenAuth.defaultProps = {
   bottomColor: '#000',
   whiteScan: false,
   appBarProps: {},
+  disableBottomSafeArea: false,
 };
 
 export default ScreenAuth;

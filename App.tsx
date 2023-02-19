@@ -10,7 +10,6 @@ import { NativeBaseProvider } from 'native-base';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 
-import { AnimatePresence } from 'moti';
 import { LogBox } from 'react-native';
 
 LogBox.ignoreLogs(['Warning: ...']); // Hide warnings
@@ -26,14 +25,12 @@ const App = () => {
   }
   return (
     <SafeAreaProvider>
-      <AnimatePresence exitBeforeEnter>
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <NativeBaseProvider>
-            <Navigation colorScheme={colorScheme} />
-            <StatusBar />
-          </NativeBaseProvider>
-        </GestureHandlerRootView>
-      </AnimatePresence>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <NativeBaseProvider>
+          <Navigation colorScheme={colorScheme} />
+          <StatusBar />
+        </NativeBaseProvider>
+      </GestureHandlerRootView>
     </SafeAreaProvider>
   );
 };

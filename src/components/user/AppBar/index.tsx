@@ -8,6 +8,7 @@ import scanner from '@assets/icons/user/scan.png';
 import { useNavigation } from '@react-navigation/native';
 import { getRespValue } from '@utils/design/design';
 import { Image, Pressable, Text, TouchableOpacity, View } from 'react-native';
+import Animated, { FadeInUp, FadeOutUp, Layout } from 'react-native-reanimated';
 
 export interface AppBarProps {
   whiteScan?: boolean;
@@ -18,6 +19,8 @@ export interface AppBarProps {
   light?: boolean;
   notifications?: boolean;
   goBack?: boolean;
+  isFocused?: boolean;
+  animateProfile?: boolean;
 }
 
 const AppBar = ({
@@ -29,64 +32,83 @@ const AppBar = ({
   light,
   notifications,
   goBack,
+  isFocused,
+  animateProfile,
 }: AppBarProps) => {
   const navigation = useNavigation();
 
   if (profile) {
     return (
       <View
-        className="px-4 py-4  w-full flex-row items-center justify-between"
         style={{
           backgroundColor: profileColor,
         }}
       >
-        <TouchableOpacity
-          onPress={() => {
-            if (goBack) {
-              navigation.goBack();
-              return;
-            }
-            if (onPress) {
-              onPress();
-            } else {
-              navigation.navigate('Home' as never);
-            }
-          }}
-        >
-          {light ? (
-            <CheveronLeftWhite
-              style={{
-                width: getRespValue(40),
-                height: getRespValue(40),
+        {isFocused && (
+          <Animated.View
+            entering={animateProfile ? FadeInUp.delay(100) : undefined}
+            exiting={animateProfile ? FadeOutUp : undefined}
+            layout={animateProfile ? Layout : undefined}
+            className="px-4 py-4  w-full flex-row items-center justify-between"
+            style={{
+              backgroundColor: profileColor,
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => {
+                if (goBack) {
+                  navigation.goBack();
+                  return;
+                }
+                if (onPress) {
+                  onPress();
+                } else {
+                  navigation.navigate('Home' as never);
+                }
               }}
-            />
-          ) : (
-            <CheveronLeftBlack
+              className="w-1/5"
+            >
+              {light ? (
+                <CheveronLeftWhite
+                  style={{
+                    width: getRespValue(40),
+                    height: getRespValue(40),
+                  }}
+                />
+              ) : (
+                <CheveronLeftBlack
+                  style={{
+                    width: getRespValue(40),
+                    height: getRespValue(40),
+                  }}
+                />
+              )}
+            </TouchableOpacity>
+            <Text
               style={{
-                width: getRespValue(40),
-                height: getRespValue(40),
+                fontSize: getRespValue(27),
               }}
-            />
-          )}
-        </TouchableOpacity>
-        <Text
-          style={{
-            fontSize: getRespValue(27),
-          }}
-          className={`font-aeonik ${light ? 'text-black' : 'text-white'}`}
-        >
-          {title}
-        </Text>
-        <TouchableOpacity onPress={() => console.log('notifications')}>
-          {notifications && (
-            <NotificationIcon
-              style={{
-                width: getRespValue(40),
-                height: getRespValue(40),
-              }}
-            />
-          )}
-        </TouchableOpacity>
+              className={`font-aeonik w-3/5 text-center ${
+                light ? 'text-black' : 'text-white '
+              }`}
+            >
+              {title}
+            </Text>
+            <TouchableOpacity
+              onPress={() => console.log('notifications')}
+              className="w-1/5"
+            >
+              {notifications && (
+                <NotificationIcon
+                  style={{
+                    width: getRespValue(40),
+                    height: getRespValue(40),
+                  }}
+                />
+              )}
+            </TouchableOpacity>
+          </Animated.View>
+        )}
       </View>
     );
   }
@@ -137,6 +159,8 @@ AppBar.defaultProps = {
   light: false,
   notifications: false,
   goBack: false,
+  isFocused: true,
+  animateProfile: false,
 };
 
 export default AppBar;

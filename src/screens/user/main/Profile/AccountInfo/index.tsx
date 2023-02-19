@@ -1,78 +1,23 @@
-import Button from '@src/components/globals/Button';
-import ScreenAuth from '@src/components/globals/ScreenAuth';
-import Colors from '@src/constants/Colors';
-import { getRespValue } from '@utils/design/design';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-import keyIcon from '@assets/icons/user/key.png';
-
-const DetailRow = () => {
-  return (
-    <View
-      style={{
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-
-        paddingVertical: getRespValue(20),
-        paddingHorizontal: getRespValue(20),
-      }}
-    />
-  );
-};
+/* eslint-disable camelcase */
+/* eslint-disable react/jsx-pascal-case */
+import Step1_Overview from '@src/components/user/profile/account-info/Step1_Overview';
+import Step2_CurrentPassword from '@src/components/user/profile/account-info/Step2_CurrentPassword';
+import Step3_NewPassword from '@src/components/user/profile/account-info/Step3_NewPassword';
+import Step4_ConfirmPassword from '@src/components/user/profile/account-info/Step4_ConfirmPassword';
+import Step5_Done from '@src/components/user/profile/account-info/Step5_Done';
+import useMultistepForm from '@src/hooks/useMultiStepForm';
+import { AnimatePresence } from 'moti';
 
 const AccountInfo = () => {
-  return (
-    <ScreenAuth
-      appBarProps={{
-        profile: true,
-        light: true,
-        profileColor: Colors.light.theme.backgroundLightGreen,
-        goBack: true,
-      }}
-      topColor={Colors.light.theme.backgroundLightGreen}
-    >
-      <View
-        style={{
-          backgroundColor: Colors.light.theme.backgroundLightGreen,
-          height: getRespValue(220),
-        }}
-      >
-        <Text
-          style={{
-            fontSize: getRespValue(44),
-          }}
-          className="font-aeonik pl-4 pt-4 w-2/4"
-        >
-          Account Info
-        </Text>
-      </View>
-      <View
-        className={`bg-[${Colors.light.theme.backgroundDarkGreen}] flex-1 justify-between`}
-        style={{
-          backgroundColor: Colors.light.theme.backgroundDarkGreen,
-        }}
-      >
-        <Text>Test</Text>
+  const { step } = useMultistepForm([
+    <Step1_Overview />,
+    <Step2_CurrentPassword />,
+    <Step3_NewPassword />,
+    <Step4_ConfirmPassword />,
+    <Step5_Done />,
+  ]);
 
-        <Button
-          buttonStyles={{
-            backgroundColor: Colors.light.theme.buttonGreen,
-          }}
-          buttonType="leftIcon"
-          icon={keyIcon}
-          // onPress={() => {
-          //   navigation.navigate('Support');
-          // }}
-        >
-          Change password
-        </Button>
-      </View>
-    </ScreenAuth>
-  );
+  return <AnimatePresence exitBeforeEnter>{step}</AnimatePresence>;
 };
 
 export default AccountInfo;
-
-const styles = StyleSheet.create({});
