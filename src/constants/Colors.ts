@@ -36,6 +36,7 @@ export default {
       textLightYellow: '#FFF7C6',
       textLightGreen: '#BCFADA',
       textLightPink: '#FFD1FF',
+      textDarkPink: '#D385D6',
     },
   },
   dark: {

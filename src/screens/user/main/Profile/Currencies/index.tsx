@@ -4,6 +4,36 @@ import { getRespValue } from '@utils/design/design';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+const CurrenciesRow = ({
+  currency,
+  name,
+}: {
+  currency: string;
+  name: string;
+}) => {
+  return (
+    <View className="flex-row gap-3 items-center py-3">
+      <Text
+        className="font-aeonik-medium"
+        style={{
+          fontSize: getRespValue(22),
+          color: Colors.light.theme.textDarkPink,
+        }}
+      >
+        {currency}
+      </Text>
+      <Text
+        className="font-aeonik"
+        style={{
+          fontSize: getRespValue(22),
+        }}
+      >
+        {name}
+      </Text>
+    </View>
+  );
+};
+
 const Currencies = () => {
   return (
     <ScreenAuth
@@ -27,16 +57,17 @@ const Currencies = () => {
           }}
           className="font-aeonik pl-4 pt-4 w-2/4"
         >
-          Account Info
+          Current currencies
         </Text>
       </View>
       <View
-        className={`bg-[${Colors.light.theme.backgroundDarkPink}] flex-1 justify-between`}
+        className={`bg-[${Colors.light.theme.backgroundDarkPink}] flex-1 justify-start px-4 pt-4`}
         style={{
           backgroundColor: Colors.light.theme.backgroundDarkPink,
         }}
       >
-        <Text>Test</Text>
+        <CurrenciesRow currency="USD" name="Stable Dollar" />
+        <CurrenciesRow currency="COP" name="Colombian Peso" />
       </View>
     </ScreenAuth>
   );

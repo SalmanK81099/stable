@@ -43,14 +43,13 @@ const AppBar = ({
         style={{
           backgroundColor: profileColor,
         }}
-        className="px-4 py-4  w-full "
       >
         {isFocused && (
           <Animated.View
             entering={animateProfile ? FadeInUp.delay(100) : undefined}
             exiting={animateProfile ? FadeOutUp : undefined}
             layout={animateProfile ? Layout : undefined}
-            className="w-full flex-row items-center justify-between"
+            className="px-4 py-4  w-full  flex-row items-center justify-between"
             style={{
               backgroundColor: profileColor,
             }}
