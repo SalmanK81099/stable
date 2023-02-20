@@ -7,7 +7,6 @@ import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
 import { MotiView } from 'moti';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { FadeOutUp } from 'react-native-reanimated';
 import MovementsList from './components/MovementList';
 
 interface Props extends MultiStepFormProps {
@@ -25,7 +24,8 @@ const Step1_List = ({ next, data, setData }: Props) => {
       style={{
         flex: 1,
       }}
-      exiting={FadeOutUp}
+      exit={{}}
+      // exiting={FadeOutUp}
       //   exit={{
       //     opacity: 0.5,
       //   }}
@@ -33,7 +33,7 @@ const Step1_List = ({ next, data, setData }: Props) => {
       <ScreenAuth
         topColor={Colors.light.theme.backgroundLightGreen}
         appBarProps={{
-          profile: true,
+          profileMoti: true,
           profileColor: Colors.light.theme.backgroundLightGreen,
           light: true,
           title: 'Movements',

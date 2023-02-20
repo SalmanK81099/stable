@@ -18,4 +18,8 @@ export const animationConfig = {
     delay: 100,
     duration: 300,
   },
+  exitTransition: {
+    type: 'timing',
+    duration: 300,
+  },
 };

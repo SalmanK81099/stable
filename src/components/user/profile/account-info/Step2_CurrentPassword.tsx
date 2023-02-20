@@ -21,16 +21,17 @@ const Step2_CurrentPassword = ({ back, next }: MultiStepFormProps) => {
       {...(animationConfig as object)}
       key="confirm-password-screen"
       from={{
-        opacity: 0,
+        opacity: 0.6,
       }}
       exit={{}}
     >
       <ScreenAuth
         appBarProps={{
-          profile: true,
+          profileMoti: true,
           profileColor: Colors.light.background,
           title: 'Change password',
           onPress: () => back && back(),
+          disableEndMoti: true,
         }}
         topColor={Colors.light.background}
       >

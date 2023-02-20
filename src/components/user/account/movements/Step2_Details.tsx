@@ -73,121 +73,129 @@ const getColor = (type: string) => {
 
 const Step2_Details = ({ back, data }: Props) => {
   return (
-    <MotiView
-      key="movements-details-step-2"
-      style={{
-        flex: 1,
+    <ScreenAuth
+      appBarProps={{
+        profileMoti: true,
+        light: true,
+        profileColor: getColor(data.type).light,
+        title: 'Details',
+        onPress: () => back && back(),
       }}
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...(animationConfig as object)}
-      from={{
-        opacity: 0,
-        translateY: 100,
-      }}
-      exit={{
-        opacity: 0,
-        translateY: 100,
-      }}
+      topColor={getColor(data.type).light}
+      disableBottomSafeArea
     >
-      <ScreenAuth
-        appBarProps={{
-          profile: true,
-          light: true,
-          profileColor: getColor(data.type).light,
-          title: 'Details',
-          onPress: () => back && back(),
+      <View
+        style={{
+          backgroundColor: getColor(data.type).light,
+          flex: 1,
         }}
-        topColor={getColor(data.type).light}
-        disableBottomSafeArea
       >
-        <View
+        <MotiView
+          key="movements-details-step-2"
           style={{
-            backgroundColor: getColor(data.type).light,
-            height: getRespValue(270),
+            flex: 1,
           }}
-          className="flex justify-around items-center py-4"
-        >
-          {data.type === 'money_added' && (
-            <AddedSVG
-              style={{
-                width: getRespValue(75),
-                height: getRespValue(75),
-              }}
-            />
-          )}
-          {data.type === 'money_received' && (
-            <ReceivedSVG
-              style={{
-                width: getRespValue(75),
-                height: getRespValue(75),
-              }}
-            />
-          )}
-          {(data.type === 'money_sent' || data.type === 'money_withdrawed') && (
-            <SentSVG
-              style={{
-                width: getRespValue(75),
-                height: getRespValue(75),
-              }}
-            />
-          )}
-          <Text
-            className="font-aeonik"
-            style={{
-              fontSize: getRespValue(20),
-            }}
-          >
-            You{' '}
-            {data.type === 'money_added'
-              ? 'added'
-              : data.type === 'money_received'
-              ? 'received'
-              : data.type === 'money_sent'
-              ? 'sent'
-              : 'withdrawed'}
-          </Text>
-          <Text
-            className="font-aeonik-bold"
-            style={{
-              fontSize: getRespValue(44),
-            }}
-          >
-            $0.00 USD
-          </Text>
-          <Text
-            className="font-aeonik"
-            style={{
-              fontSize: getRespValue(22),
-              color: Colors.light.theme.textDarkGray,
-            }}
-          >
-            $00.000 COP
-          </Text>
-        </View>
-        <View
-          className={`bg-[${
-            getColor(data.type).dark
-          }] flex-1 justify-between  pt-8`}
-          style={{
-            backgroundColor: getColor(data.type).dark,
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...(animationConfig as object)}
+          from={{
+            opacity: 0.5,
+            translateY: 100,
+          }}
+          exit={{
+            opacity: 0.4,
+            translateY: 100,
           }}
         >
-          <View className="px-4">
-            <DetailsRow title="Sent to:" value="John Doe" />
-            <DetailsRow title="Account number:" value="+57 37485960" />
-            <DetailsRow title="Time and date" value="Aug 3 2022 18:00" />
-            <DetailsRow title="Exchange rate" value="1 USD = 1 COL" />
+          <View
+            style={{
+              backgroundColor: getColor(data.type).light,
+              height: getRespValue(270),
+            }}
+            className="flex justify-around items-center py-4"
+          >
+            {data.type === 'money_added' && (
+              <AddedSVG
+                style={{
+                  width: getRespValue(75),
+                  height: getRespValue(75),
+                }}
+              />
+            )}
+            {data.type === 'money_received' && (
+              <ReceivedSVG
+                style={{
+                  width: getRespValue(75),
+                  height: getRespValue(75),
+                }}
+              />
+            )}
+            {(data.type === 'money_sent' ||
+              data.type === 'money_withdrawed') && (
+              <SentSVG
+                style={{
+                  width: getRespValue(75),
+                  height: getRespValue(75),
+                }}
+              />
+            )}
+            <Text
+              className="font-aeonik"
+              style={{
+                fontSize: getRespValue(20),
+              }}
+            >
+              You{' '}
+              {data.type === 'money_added'
+                ? 'added'
+                : data.type === 'money_received'
+                ? 'received'
+                : data.type === 'money_sent'
+                ? 'sent'
+                : 'withdrawed'}
+            </Text>
+            <Text
+              className="font-aeonik-bold"
+              style={{
+                fontSize: getRespValue(44),
+              }}
+            >
+              $0.00 USD
+            </Text>
+            <Text
+              className="font-aeonik"
+              style={{
+                fontSize: getRespValue(22),
+                color: Colors.light.theme.textDarkGray,
+              }}
+            >
+              $00.000 COP
+            </Text>
           </View>
-          <Button
-            buttonStyles={{
-              backgroundColor: getColor(data.type).button,
+          <View
+            className={`bg-[${
+              getColor(data.type).dark
+            }] flex-1 justify-between  pt-8`}
+            style={{
+              backgroundColor: getColor(data.type).dark,
             }}
           >
-            Download Voucher
-          </Button>
-        </View>
-      </ScreenAuth>
-    </MotiView>
+            <View className="px-4">
+              <DetailsRow title="Sent to:" value="John Doe" />
+              <DetailsRow title="Account number:" value="+57 37485960" />
+              <DetailsRow title="Time and date" value="Aug 3 2022 18:00" />
+              <DetailsRow title="Exchange rate" value="1 USD = 1 COL" />
+            </View>
+            <Button
+              buttonStyles={{
+                backgroundColor: getColor(data.type).button,
+              }}
+            >
+              Download Voucher
+            </Button>
+          </View>
+        </MotiView>
+      </View>
+    </ScreenAuth>
   );
 };
 

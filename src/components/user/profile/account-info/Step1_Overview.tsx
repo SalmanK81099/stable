@@ -42,15 +42,15 @@ const Step1_Overview = ({ next }: MultiStepFormProps) => {
       {...(animationConfig as object)}
       key="confirm-password-screen"
       exit={{
-        opacity: 0,
+        opacity: 0.6,
       }}
       from={{
-        opacity: 0,
+        opacity: 0.6,
       }}
     >
       <ScreenAuth
         appBarProps={{
-          profile: true,
+          profileMoti: true,
           light: true,
           profileColor: Colors.light.theme.backgroundLightGreen,
           goBack: true,

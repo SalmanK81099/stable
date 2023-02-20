@@ -16,10 +16,12 @@ const Step3_NewPassword = ({ back, next }: MultiStepFormProps) => {
   return (
     <ScreenAuth
       appBarProps={{
-        profile: true,
+        profileMoti: true,
         profileColor: Colors.light.background,
         title: 'Change password',
         onPress: () => back && back(),
+        disableEndMoti: true,
+        disableStartMoti: true,
       }}
       topColor={Colors.light.background}
     >

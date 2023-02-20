@@ -21,10 +21,10 @@ const Step5_Done = ({ goTo, back }: MultiStepFormProps) => {
       {...(animationConfig as object)}
       key="confirm-password-screen"
       exit={{
-        opacity: 0,
+        opacity: 0.6,
       }}
       from={{
-        opacity: 0,
+        opacity: 0.6,
       }}
     >
       <Screen topColor={Colors.light.theme.backgroundLightGreen}>

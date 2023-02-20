@@ -48,7 +48,7 @@ const ScreenAuth = (props: Props) => {
         edges={['top']}
         style={{
           backgroundColor: topColor,
-          minHeight: getRespValue(70),
+          minHeight: getRespValue(65),
         }}
       />
       <SafeAreaView

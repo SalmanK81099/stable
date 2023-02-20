@@ -22,15 +22,16 @@ const Step4_ConfirmPassword = ({ back, next }: MultiStepFormProps) => {
       key="confirm-password-screen"
       from={{}}
       exit={{
-        opacity: 0,
+        opacity: 0.6,
       }}
     >
       <ScreenAuth
         appBarProps={{
-          profile: true,
+          profileMoti: true,
           profileColor: Colors.light.background,
           title: 'Change password',
           onPress: () => back && back(),
+          disableStartMoti: true,
         }}
         topColor={Colors.light.background}
       >
