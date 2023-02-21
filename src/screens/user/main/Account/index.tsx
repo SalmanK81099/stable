@@ -4,6 +4,7 @@
 import Button from '@src/components/globals/Button';
 // import MotiView from '@src/components/globals/MotiView';
 import FormControlFormik from '@src/components/FormControlFormik';
+import Dropdown from '@src/components/globals/Dropdown';
 import Screen from '@src/components/globals/Screen';
 import Colors from '@src/constants/Colors';
 import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
@@ -15,10 +16,25 @@ import React, { useRef, useState } from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import * as Yup from 'yup';
 // eslint-disable-next-line camelcase
+type ItemType = {
+  // label: string;
+  label: '';
+  value: '';
+};
+
 const Account = ({ next }: MultiStepFormProps) => {
   const [toggleIsOn, setToggle] = useState(false);
   const [checkIsOn, setCheck] = useState('off');
-
+  const [selected, setSelected] = useState<ItemType | undefined>(undefined);
+  const data = [
+    // { label: 'One', value: '1' },
+    // { label: 'Two', value: '2' },
+    // { label: 'Three', value: '3' },
+    // { label: 'Four', value: '4' },
+    // { label: 'Five', value: '5' },
+    { label: 'Cop', value: '1' },
+    { label: 'Mx', value: '2' },
+  ];
   // new
 
   const formik = useFormik({
@@ -126,6 +142,14 @@ const Account = ({ next }: MultiStepFormProps) => {
               // style:{}
             }}
           />
+          {/* <View className="flex row inset-9"> */}
+          <Dropdown
+            label="COP"
+            data={data}
+            dropdownType="sm"
+            onSelect={setSelected}
+          />
+          {/* </View> */}
           <FormControlFormik
             name="email"
             formik={formik}
@@ -140,6 +164,11 @@ const Account = ({ next }: MultiStepFormProps) => {
             }}
             ref={emailInputRef}
           />
+          {!!selected && (
+            <Text>
+              Selected: label = {selected.label} and value = {selected.value}
+            </Text>
+          )}
 
           <FormControlFormik
             name="phone"
@@ -155,6 +184,23 @@ const Account = ({ next }: MultiStepFormProps) => {
               // style:{}
             }}
           />
+          <Dropdown
+            label="COP"
+            data={data}
+            zIndex={3000}
+            zIndexInverse={1000}
+            dropdownType="lg"
+            onSelect={setSelected}
+          />
+          <Dropdown
+            label="COP"
+            data={data}
+            zIndex={2000}
+            zIndexInverse={2000}
+            dropdownType="lg"
+            onSelect={setSelected}
+          />
+
           <FormControlFormik
             name="password"
             formik={formik}
@@ -200,3 +246,42 @@ const Account = ({ next }: MultiStepFormProps) => {
 export default Account;
 
 const styles = StyleSheet.create({});
+
+// import Dropdown from '@src/components/globals/Dropdown';
+// import React, { FC, useState } from 'react';
+// import { StyleSheet, Text, View } from 'react-native';
+
+// const App: FC = () => {
+//   const [selected, setSelected] = useState(undefined);
+//   const data = [
+//     { label: 'One', value: '1' },
+//     { label: 'Two', value: '2' },
+//     { label: 'Three', value: '3' },
+//     { label: 'Four', value: '4' },
+//     { label: 'Five', value: '5' },
+//   ];
+
+//   return (
+//     <View style={styles.container}>
+//       {!!selected && (
+//         <Text>
+//           Selected: label = {selected.label} and value = {selected.value}
+//         </Text>
+//       )}
+//       <Dropdown label="Select Item" data={data} onSelect={setSelected} />
+//       <Text>This is the rest of the form.</Text>
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     flexDirection: 'column',
+//   },
+// });
+
+// export default App;

@@ -5,6 +5,7 @@ export default {
   light: {
     text: '#000',
     textYellow: '#FFF7C6',
+    lineYellow: '#EAB67D',
     textGray: '#636362',
     background: '#20201F',
     tint: tintColorLight,
@@ -18,6 +19,7 @@ export default {
       darkGreen: '#7DCCA1',
       lightGreen: '#D0FFE6',
       white: '#EFEFEF',
+      black: '#20201F',
     },
   },
   dark: {
