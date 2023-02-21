@@ -8,6 +8,7 @@ import Modal from '@src/components/globals/Modal';
 import Screen from '@src/components/globals/Screen';
 import Colors from '@src/constants/Colors';
 import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
+import useMyI18n from '@src/hooks/useMyI18n';
 import { animationConfig } from '@utils/animation/animation';
 import { getRespValue } from '@utils/design/design';
 import { MotiView } from 'moti';
@@ -19,6 +20,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const Step1_Email = ({ next }: MultiStepFormProps) => {
   const toast = useToast();
   const [showModal, setShowModal] = useState(false);
+  const i18n = useMyI18n();
   return (
     <Screen
       className={`bg-[${Colors.light.theme.yellow}]`}
@@ -49,7 +51,7 @@ const Step1_Email = ({ next }: MultiStepFormProps) => {
               fontSize: getRespValue(18),
             }}
           >
-            We sent you a link to reset your password to:{' '}
+            {i18n.t('screens.user.auth.forgot.step1.modal.text')}{' '}
             <Text
               className="text-center p-4 font-aeonik-bold"
               style={{
@@ -60,15 +62,14 @@ const Step1_Email = ({ next }: MultiStepFormProps) => {
             </Text>
           </Text>
         </Modal>
-        <View className="px-4 pt-8 pb-8">
+        <View className="px-4 pt-8 mb-8 ">
           <Text
             style={{
-              fontSize: getRespValue(45),
+              fontSize: getRespValue(40),
             }}
-            className="font-aeonik w-3/4"
+            className="font-aeonik w-3/4 "
           >
-            Enter your email and we&apos;ll send you a link to reset your
-            password
+            {i18n.t('screens.user.auth.forgot.step1.title')}
           </Text>
         </View>
       </MotiView>
@@ -93,14 +94,16 @@ const Step1_Email = ({ next }: MultiStepFormProps) => {
           className="bg-none h-full flex-1 w-full flex-col items-start justify-start"
         >
           <View className="flex-1 w-full">
-            <Input placeholder="Email" />
+            <Input
+              placeholder={i18n.t('components.inputs.placeholders.email')}
+            />
           </View>
           <Button
             onPress={() => {
               setShowModal(true);
             }}
           >
-            Reset Password
+            {i18n.t('components.buttons.resetPassword')}
           </Button>
         </MotiView>
       </View>

@@ -1,4 +1,8 @@
 import { combineReducers } from 'redux';
+import userReducer from './slices/userSlice';
 
-// eslint-disable-next-line import/prefer-default-export
-export const rootReducer = combineReducers({});
+const reducers = combineReducers({
+  user: userReducer,
+});
+
+export default reducers;

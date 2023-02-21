@@ -10,6 +10,7 @@ import Screen from '@src/components/globals/Screen';
 import Switch from '@src/components/globals/Switch';
 import Colors from '@src/constants/Colors';
 import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
+import useMyI18n from '@src/hooks/useMyI18n';
 import { animationConfig } from '@utils/animation/animation';
 import { getRespValue } from '@utils/design/design';
 import { MotiView } from 'moti';
@@ -20,6 +21,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const Step1_BasicDetails = ({ next }: MultiStepFormProps) => {
   const [toggleIsOn, setToggle] = useState(false);
   const [checkIsOn, setCheck] = useState('off');
+  const i18n = useMyI18n();
 
   return (
     <Screen
@@ -44,7 +46,7 @@ const Step1_BasicDetails = ({ next }: MultiStepFormProps) => {
             }}
             className="font-aeonik w-3/4"
           >
-            Let&apos;s create your account
+            {i18n.t('screens.user.auth.signup.step1.title')}
           </Text>
           <Text
             style={{
@@ -52,7 +54,7 @@ const Step1_BasicDetails = ({ next }: MultiStepFormProps) => {
             }}
             className="font-aeonik pt-4 pb-4"
           >
-            Please complete the information below
+            {i18n.t('screens.user.auth.signup.step1.subtitle')}
           </Text>
         </View>
       </MotiView>
@@ -76,26 +78,37 @@ const Step1_BasicDetails = ({ next }: MultiStepFormProps) => {
           }}
           className="bg-none h-full flex-1 w-full flex-col items-start justify-start"
         >
-          <Input placeholder="Name" />
-          <Input placeholder="Email" />
-          <PhoneInput placeholder="Enter phone Number" />
-          <Input placeholder="Create Password" password />
+          <Input placeholder={i18n.t('components.inputs.placeholders.name')} />
+          <Input placeholder={i18n.t('components.inputs.placeholders.email')} />
+          <PhoneInput
+            placeholder={i18n.t(
+              'components.inputs.placeholders.enterPhoneNumber',
+            )}
+          />
+          <Input
+            placeholder={i18n.t(
+              'components.inputs.placeholders.createPassword',
+            )}
+            password
+          />
           <Switch
             isOn={toggleIsOn}
             onToggle={() => {
               setToggle(!toggleIsOn);
             }}
-            label="Enable face ID"
+            label={i18n.t('components.inputs.switches.enableFaceId')}
           />
           <Checkbox
             className="mt-auto"
-            label="I agree to the Terms of Service and Privacy Policy"
+            label={i18n.t('components.inputs.checkboxes.agreeToTerms')}
             value={checkIsOn}
             onChange={() => {
               setCheck(preVal => (preVal === 'on' ? 'off' : 'on'));
             }}
           />
-          <Button onPress={() => next && next()}>Continue</Button>
+          <Button onPress={() => next && next()}>
+            {i18n.t('components.buttons.continue')}
+          </Button>
         </MotiView>
       </View>
     </Screen>

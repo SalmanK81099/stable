@@ -7,6 +7,7 @@ import LinkText from '@src/components/globals/LinkText';
 
 import Screen from '@src/components/globals/Screen';
 import Colors from '@src/constants/Colors';
+import useMyI18n from '@src/hooks/useMyI18n';
 import useMyToast from '@src/hooks/useToasty';
 import { animationConfig } from '@utils/animation/animation';
 import { getRespValue } from '@utils/design/design';
@@ -17,6 +18,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const Signin = () => {
   // const toast = useToast();
   const toast = useMyToast();
+  const i18n = useMyI18n();
   return (
     <Screen
       className={`bg-[${Colors.light.theme.yellow}]`}
@@ -40,7 +42,7 @@ const Signin = () => {
             }}
             className="font-aeonik w-3/4"
           >
-            Welcome back to Stable
+            {i18n.t('screens.user.auth.signin.title')}
           </Text>
           <Text
             style={{
@@ -48,7 +50,7 @@ const Signin = () => {
             }}
             className="font-aeonik pt-4 pb-4 w-3/4"
           >
-            Enter your account information
+            {i18n.t('screens.user.auth.signin.subtitle')}
           </Text>
         </View>
       </MotiView>
@@ -73,18 +75,25 @@ const Signin = () => {
           className="bg-none h-full flex-1 w-full flex-col items-start justify-start"
         >
           <View className="flex-1 w-full">
-            <Input placeholder="Email" />
-            <Input placeholder="Password" password />
-            <LinkText to="ForgotPassword">Forgot your password?</LinkText>
+            <Input
+              placeholder={i18n.t('components.inputs.placeholders.email')}
+            />
+            <Input
+              placeholder={i18n.t('components.inputs.placeholders.password')}
+              password
+            />
+            <LinkText to="ForgotPassword">
+              {i18n.t('screens.user.auth.signin.forgot')}
+            </LinkText>
           </View>
           <Button
             onPress={() => {
               toast.error(
-                "The email and password you enter didn't match. Please double-check and try again.",
+                i18n.t('screens.user.auth.signin.errors.invalidLogin'),
               );
             }}
           >
-            Login
+            {i18n.t('components.buttons.login')}
           </Button>
         </MotiView>
       </View>

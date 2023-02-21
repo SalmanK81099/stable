@@ -1,13 +1,16 @@
 /* eslint-disable import/extensions */
 /* eslint-disable global-require */
 import { FontAwesome } from '@expo/vector-icons';
+import { setLocal } from '@store/slices/userSlice';
 import * as Font from 'expo-font';
+import { locale } from 'expo-localization';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 const useCachedResources = () => {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
-
+  const dispatch = useDispatch();
   // Load any resources or data that we need prior to rendering the app
   useEffect(() => {
     async function loadResourcesAndDataAsync() {
@@ -34,7 +37,10 @@ const useCachedResources = () => {
       }
     }
 
+    dispatch(setLocal(locale?.split('-')[0] || 'en'));
+
     loadResourcesAndDataAsync();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return isLoadingComplete;

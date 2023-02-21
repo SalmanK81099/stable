@@ -7,6 +7,7 @@ import OTP from '@src/components/globals/OTP';
 import Screen from '@src/components/globals/Screen';
 import Colors from '@src/constants/Colors';
 import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
+import useMyI18n from '@src/hooks/useMyI18n';
 import { animationConfig } from '@utils/animation/animation';
 import { getRespValue } from '@utils/design/design';
 import { MotiView } from 'moti';
@@ -17,6 +18,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 const Step3_OTPEmail = ({ back, next }: MultiStepFormProps) => {
   const [secondsLeft, setSecondsLeft] = useState(30);
   const bottomSheetRef = useRef<BottomSheetRef>();
+  const i18n = useMyI18n();
 
   useEffect(() => {
     if (secondsLeft === 0) return;
@@ -68,7 +70,7 @@ const Step3_OTPEmail = ({ back, next }: MultiStepFormProps) => {
             }}
             className="font-aeonik ml-"
           >
-            Verification
+            {i18n.t('components.verifications.email.header')}
           </Text>
         </TouchableOpacity>
         <View className="px-4 pt-8 pb-8">
@@ -78,7 +80,7 @@ const Step3_OTPEmail = ({ back, next }: MultiStepFormProps) => {
             }}
             className="font-aeonik "
           >
-            Verify your email
+            {i18n.t('components.verifications.email.title')}
           </Text>
           <Text
             style={{
@@ -86,7 +88,7 @@ const Step3_OTPEmail = ({ back, next }: MultiStepFormProps) => {
             }}
             className="font-aeonik pt-4 pb-4"
           >
-            Enter the 6-digit code we sent to your email
+            {i18n.t('components.verifications.email.subtitle')}
           </Text>
         </View>
       </MotiView>
@@ -121,7 +123,7 @@ const Step3_OTPEmail = ({ back, next }: MultiStepFormProps) => {
               }}
               className="font-aeonik px-4 pt-4 pb-4 w-full text-left"
             >
-              The code will expire in 00:
+              {i18n.t('components.verifications.email.expiring')}
               {secondsLeft > 10 ? secondsLeft : `0${secondsLeft}`}
             </Text>
           </View>
@@ -130,7 +132,7 @@ const Step3_OTPEmail = ({ back, next }: MultiStepFormProps) => {
               bottomSheetRef.current?.expand();
             }}
           >
-            Didn&rsquo;t recieve the code?
+            {i18n.t('components.buttons.didNotReceiveCode')}
           </Button>
         </MotiView>
       </View>

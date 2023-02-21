@@ -5,12 +5,14 @@ import Button from '@src/components/globals/Button';
 import MotiView from '@src/components/globals/MotiView';
 import Screen from '@src/components/globals/Screen';
 import Colors from '@src/constants/Colors';
+import useMyI18n from '@src/hooks/useMyI18n';
 import { animationConfig } from '@utils/animation/animation';
 import { getRespValue } from '@utils/design/design';
 import React from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 const Step4_Done = () => {
+  const i18n = useMyI18n();
   return (
     <Screen
       className={`bg-[${Colors.light.theme.yellow}]`}
@@ -38,7 +40,7 @@ const Step4_Done = () => {
               }}
               className="font-aeonik px-4 w-3/4"
             >
-              You&apos;re account was created successfully
+              {i18n.t('screens.user.auth.signup.step4.title')}
             </Text>
           </MotiView>
           <MotiView
@@ -53,7 +55,7 @@ const Step4_Done = () => {
               translateY: -100,
             }}
           >
-            <Button>Great, let&apos;s continue</Button>
+            <Button>{i18n.t('components.buttons.greatContinue')}</Button>
           </MotiView>
         </View>
       </ImageBackground>

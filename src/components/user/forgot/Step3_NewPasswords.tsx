@@ -7,6 +7,7 @@ import Input from '@src/components/globals/Input';
 import Screen from '@src/components/globals/Screen';
 import Colors from '@src/constants/Colors';
 import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
+import useMyI18n from '@src/hooks/useMyI18n';
 import { animationConfig } from '@utils/animation/animation';
 import { getRespValue } from '@utils/design/design';
 import { MotiView } from 'moti';
@@ -16,6 +17,7 @@ import { StyleSheet, Text, View } from 'react-native';
 // eslint-disable-next-line camelcase
 const Step3_NewPasswords = ({ next }: MultiStepFormProps) => {
   const toast = useToast();
+  const i18n = useMyI18n();
   return (
     <Screen
       className={`bg-[${Colors.light.theme.yellow}]`}
@@ -39,7 +41,7 @@ const Step3_NewPasswords = ({ next }: MultiStepFormProps) => {
             }}
             className="font-aeonik w-3/4"
           >
-            Enter a new password for your account
+            {i18n.t('screens.user.auth.forgot.step3.title')}
           </Text>
         </View>
       </MotiView>
@@ -64,10 +66,20 @@ const Step3_NewPasswords = ({ next }: MultiStepFormProps) => {
           className="bg-none h-full flex-1 w-full flex-col items-start justify-start"
         >
           <View className="flex-1 w-full">
-            <Input placeholder="Password" password />
-            <Input placeholder="Confirm Password" password />
+            <Input
+              placeholder={i18n.t('components.inputs.placeholders.password')}
+              password
+            />
+            <Input
+              placeholder={i18n.t(
+                'components.inputs.placeholders.confirmPassword',
+              )}
+              password
+            />
           </View>
-          <Button onPress={() => next && next()}>Submit</Button>
+          <Button onPress={() => next && next()}>
+            {i18n.t('components.buttons.submit')}
+          </Button>
         </MotiView>
       </View>
     </Screen>

@@ -4,20 +4,22 @@
 import cheveronLeft from '@assets/icons/chevron-left-black.png';
 import OTP from '@src/components/globals/OTP';
 import Screen from '@src/components/globals/Screen';
-import Toast from '@src/components/globals/Toast';
 import BottomSheetButtonOTP from '@src/components/user/BottomSheetButtonOTP';
 import Colors from '@src/constants/Colors';
 import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
+import useMyI18n from '@src/hooks/useMyI18n';
+import useMyToast from '@src/hooks/useToasty';
 import { animationConfig } from '@utils/animation/animation';
 import { getRespValue } from '@utils/design/design';
 import { MotiView } from 'moti';
-import { useToast } from 'native-base';
 import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // eslint-disable-next-line camelcase
 const Step2_OTP = ({ back, next }: MultiStepFormProps) => {
   const [secondsLeft, setSecondsLeft] = useState(30);
+  const i18n = useMyI18n();
+  const toast = useMyToast();
 
   useEffect(() => {
     if (secondsLeft === 0) return;
@@ -37,25 +39,8 @@ const Step2_OTP = ({ back, next }: MultiStepFormProps) => {
     };
   }, [secondsLeft]);
 
-  const toast = useToast();
-
   useEffect(() => {
-    toast.show({
-      render: ({ id }) => {
-        return (
-          <Toast
-            {...{
-              id,
-              error: true,
-              title: 'Invalid Code',
-              variant: 'solid',
-              isClosable: true,
-              toast,
-            }}
-          />
-        );
-      },
-    });
+    toast.error(i18n.t('screens.user.auth.signup.step2.errors.invalidCode'));
   }, []);
 
   return (
@@ -90,7 +75,7 @@ const Step2_OTP = ({ back, next }: MultiStepFormProps) => {
             }}
             className="font-aeonik ml-"
           >
-            Verification
+            {i18n.t('components.headers.verification')}
           </Text>
         </TouchableOpacity>
         <View className="px-4 pt-8 pb-8">
@@ -100,7 +85,7 @@ const Step2_OTP = ({ back, next }: MultiStepFormProps) => {
             }}
             className="font-aeonik "
           >
-            Verify your number
+            {i18n.t('screens.user.auth.signup.step2.title')}
           </Text>
           <Text
             style={{
@@ -108,7 +93,7 @@ const Step2_OTP = ({ back, next }: MultiStepFormProps) => {
             }}
             className="font-aeonik pt-4 pb-4"
           >
-            Enter the 6-digit code we sent to your phone number
+            {i18n.t('screens.user.auth.signup.step2.subtitle')}
           </Text>
         </View>
       </MotiView>
@@ -143,11 +128,13 @@ const Step2_OTP = ({ back, next }: MultiStepFormProps) => {
               }}
               className="font-aeonik px-4 pt-4 pb-4 w-full text-left"
             >
-              The code will expire in 00:
+              {i18n.t('screens.user.auth.signup.step2.expiring')}
               {secondsLeft > 10 ? secondsLeft : `0${secondsLeft}`}
             </Text>
           </View>
-          <BottomSheetButtonOTP title="Didn't receive the code?" />
+          <BottomSheetButtonOTP
+            title={i18n.t('components.buttons.didNotReceiveCode')}
+          />
         </MotiView>
       </View>
     </Screen>
