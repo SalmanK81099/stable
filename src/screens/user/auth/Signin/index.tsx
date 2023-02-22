@@ -42,7 +42,7 @@ const Signin = () => {
             }}
             className="font-aeonik w-3/4"
           >
-            {i18n.t('screens.user.auth.signin.title')}
+            {i18n.t('screens.user.auth.signin.title')}Stable
           </Text>
           <Text
             style={{

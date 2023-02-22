@@ -5,6 +5,7 @@ import Input from '@src/components/globals/Input';
 import ScreenAuth from '@src/components/globals/ScreenAuth';
 import Colors from '@src/constants/Colors';
 import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
+import useMyI18n from '@src/hooks/useMyI18n';
 import { animationConfig } from '@utils/animation/animation';
 import { getRespValue } from '@utils/design/design';
 import { MotiView } from 'moti';
@@ -13,12 +14,14 @@ import React from 'react';
 import { Platform, StyleSheet, Text } from 'react-native';
 
 const Step3_NewPassword = ({ back, next }: MultiStepFormProps) => {
+  const i18n = useMyI18n();
+
   return (
     <ScreenAuth
       appBarProps={{
         profileMoti: true,
         profileColor: Colors.light.background,
-        title: 'Change password',
+        title: i18n.t('screens.user.profile.accountInfo.step3.header'),
         onPress: () => back && back(),
         disableEndMoti: true,
         disableStartMoti: true,
@@ -53,7 +56,7 @@ const Step3_NewPassword = ({ back, next }: MultiStepFormProps) => {
             }}
             className="font-aeonik pl-4 pt-4 "
           >
-            Enter your new password
+            {i18n.t('screens.user.profile.accountInfo.step3.title')}
           </Text>
 
           <Input
@@ -63,7 +66,7 @@ const Step3_NewPassword = ({ back, next }: MultiStepFormProps) => {
               borderTopColor: Colors.light.textGray,
               borderTopWidth: 2,
             }}
-            placeholder="Password"
+            placeholder={i18n.t('components.inputs.placeholders.password')}
             className="mt-4"
             password
           />
@@ -87,7 +90,7 @@ const Step3_NewPassword = ({ back, next }: MultiStepFormProps) => {
             }}
             onPress={() => next && next()}
           >
-            Confirm
+            {i18n.t('components.buttons.confirm')}
           </Button>
         </MotiView>
       </KeyboardAvoidingView>

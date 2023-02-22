@@ -1,9 +1,9 @@
 import * as Localization from 'expo-localization';
 import { I18n } from 'i18n-js';
 
-import { en } from './locales';
+import { en, es } from './locales';
 
-const i18n = new I18n({ en });
+const i18n = new I18n({ en, es });
 
 i18n.enableFallback = true;
 i18n.locale = Localization.locale;

@@ -11,6 +11,7 @@ import lockIcon from '@assets/icons/user/lock.png';
 
 import CardSVG from '@assets/images/card.svg';
 import Toggle from '@src/components/globals/Switch';
+import useMyI18n from '@src/hooks/useMyI18n';
 
 const Card = ({ navigation }: any) => {
   // useEffect(() => {
@@ -26,6 +27,8 @@ const Card = ({ navigation }: any) => {
   //     }
   //   })();
   // }, []);
+
+  const i18n = useMyI18n();
 
   return (
     <ScreenAuth
@@ -44,7 +47,7 @@ const Card = ({ navigation }: any) => {
           <Toggle
             onColor="#fff"
             offColor="#fff"
-            label="Freeze card"
+            label={i18n.t('components.switch.freezeCard')}
             toggleStyles={{
               backgroundColor: '#fff',
             }}
@@ -59,7 +62,7 @@ const Card = ({ navigation }: any) => {
               navigation.navigate('Movements');
             }}
           >
-            Block card
+            {i18n.t('components.buttons.blockCard')}
           </Button>
 
           <Button
@@ -72,7 +75,7 @@ const Card = ({ navigation }: any) => {
               navigation.navigate('Add');
             }}
           >
-            Change card&apos;s pin
+            {i18n.t('components.buttons.changeCardPin')}
           </Button>
         </View>
       </View>

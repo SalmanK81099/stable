@@ -12,6 +12,7 @@ import ReceivedSVG from '@assets/icons/user/account/received.svg';
 import SentSVG from '@assets/icons/user/account/sent.svg';
 
 import Button from '@src/components/globals/Button';
+import useMyI18n from '@src/hooks/useMyI18n';
 import { animationConfig } from '@utils/animation/animation';
 import { MotiView } from 'moti';
 
@@ -37,11 +38,6 @@ const DetailsRow = ({ title, value }: { title: string; value: string }) => {
     </View>
   );
 };
-
-interface Props extends MultiStepFormProps {
-  data: any;
-  setData: (data: any) => void;
-}
 
 const getColor = (type: string) => {
   switch (type) {
@@ -70,15 +66,20 @@ const getColor = (type: string) => {
       };
   }
 };
+interface Props extends MultiStepFormProps {
+  data?: any;
+  setData?: (data: any) => void;
+}
 
 const Step2_Details = ({ back, data }: Props) => {
+  const i18n = useMyI18n();
   return (
     <ScreenAuth
       appBarProps={{
         profileMoti: true,
         light: true,
         profileColor: getColor(data.type).light,
-        title: 'Details',
+        title: i18n.t('components.headers.details'),
         onPress: () => back && back(),
       }}
       topColor={getColor(data.type).light}
@@ -146,12 +147,12 @@ const Step2_Details = ({ back, data }: Props) => {
             >
               You{' '}
               {data.type === 'money_added'
-                ? 'added'
+                ? i18n.t('screens.user.account.movements.step2.added')
                 : data.type === 'money_received'
-                ? 'received'
+                ? i18n.t('screens.user.account.movements.step2.received')
                 : data.type === 'money_sent'
-                ? 'sent'
-                : 'withdrawed'}
+                ? i18n.t('screens.user.account.movements.step2.sent')
+                : i18n.t('screens.user.account.movements.step2.withdrawed')}
             </Text>
             <Text
               className="font-aeonik-bold"
@@ -180,23 +181,47 @@ const Step2_Details = ({ back, data }: Props) => {
             }}
           >
             <View className="px-4">
-              <DetailsRow title="Sent to:" value="John Doe" />
-              <DetailsRow title="Account number:" value="+57 37485960" />
-              <DetailsRow title="Time and date" value="Aug 3 2022 18:00" />
-              <DetailsRow title="Exchange rate" value="1 USD = 1 COL" />
+              <DetailsRow
+                title={i18n.t('screens.user.account.movements.step2.sentTo')}
+                value="John Doe"
+              />
+              <DetailsRow
+                title={i18n.t(
+                  'screens.user.account.movements.step2.accountNumber',
+                )}
+                value="+57 37485960"
+              />
+              <DetailsRow
+                title={i18n.t(
+                  'screens.user.account.movements.step2.timeAndDate',
+                )}
+                value="Aug 3 2022 18:00"
+              />
+              <DetailsRow
+                title={i18n.t(
+                  'screens.user.account.movements.step2.exchangeRate',
+                )}
+                value="1 USD = 1 COL"
+              />
             </View>
             <Button
               buttonStyles={{
                 backgroundColor: getColor(data.type).button,
               }}
             >
-              Download Voucher
+              {i18n.t('components.buttons.downloadVoucher')}
             </Button>
           </View>
         </MotiView>
       </View>
     </ScreenAuth>
   );
+};
+
+Step2_Details.defaultProps = {
+  data: {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setData: () => {},
 };
 
 export default Step2_Details;

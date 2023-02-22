@@ -1,5 +1,6 @@
 import ScreenAuth from '@src/components/globals/ScreenAuth';
 import Colors from '@src/constants/Colors';
+import useMyI18n from '@src/hooks/useMyI18n';
 import { getRespValue } from '@utils/design/design';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -35,6 +36,7 @@ const CurrenciesRow = ({
 };
 
 const Currencies = () => {
+  const i18n = useMyI18n();
   return (
     <ScreenAuth
       appBarProps={{
@@ -57,7 +59,7 @@ const Currencies = () => {
           }}
           className="font-aeonik pl-4 pt-4 w-2/4"
         >
-          Current currencies
+          {i18n.t('screens.user.profile.currencies.step1.title')}
         </Text>
       </View>
       <View

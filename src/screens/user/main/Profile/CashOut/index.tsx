@@ -1,10 +1,12 @@
 import ScreenAuth from '@src/components/globals/ScreenAuth';
 import Colors from '@src/constants/Colors';
+import useMyI18n from '@src/hooks/useMyI18n';
 import { getRespValue } from '@utils/design/design';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 const CashOut = () => {
+  const i18n = useMyI18n();
   return (
     <ScreenAuth
       appBarProps={{
@@ -27,7 +29,7 @@ const CashOut = () => {
           }}
           className="font-aeonik pl-4 pt-4 px-4"
         >
-          How much money will you withdrawal
+          {i18n.t('screens.user.profile.cashOut.step1.title')}
         </Text>
       </View>
       <View

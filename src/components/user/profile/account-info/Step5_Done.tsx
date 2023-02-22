@@ -6,6 +6,7 @@ import Button from '@src/components/globals/Button';
 import Screen from '@src/components/globals/Screen';
 import Colors from '@src/constants/Colors';
 import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
+import useMyI18n from '@src/hooks/useMyI18n';
 import { animationConfig } from '@utils/animation/animation';
 import { getRespValue } from '@utils/design/design';
 import { MotiView } from 'moti';
@@ -13,6 +14,7 @@ import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 const Step5_Done = ({ goTo, back }: MultiStepFormProps) => {
   const navigation = useNavigation();
+  const i18n = useMyI18n();
   return (
     <MotiView
       style={{
@@ -54,7 +56,7 @@ const Step5_Done = ({ goTo, back }: MultiStepFormProps) => {
                 }}
                 className="font-aeonik px-4 w-3/4"
               >
-                You&apos;re account password has been changed
+                {i18n.t('screens.user.profile.accountInfo.step5.title')}
               </Text>
             </MotiView>
             <MotiView
@@ -77,7 +79,7 @@ const Step5_Done = ({ goTo, back }: MultiStepFormProps) => {
                   navigation.navigate('Profile' as never);
                 }}
               >
-                Back to profile
+                {i18n.t('screens.user.profile.accountInfo.step5.button')}
               </Button>
             </MotiView>
           </View>

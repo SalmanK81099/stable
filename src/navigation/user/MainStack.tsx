@@ -15,6 +15,7 @@ import card from '@assets/icons/bottom-tabs/card.png';
 import homeActive from '@assets/icons/bottom-tabs/home-active.png';
 import home from '@assets/icons/bottom-tabs/home.png';
 import { createStackNavigator } from '@react-navigation/stack';
+import useMyI18n from '@src/hooks/useMyI18n';
 import Add from '@src/screens/user/main/Account/Add';
 import Movements from '@src/screens/user/main/Account/Movements';
 import Send from '@src/screens/user/main/Account/Send';
@@ -24,9 +25,11 @@ import Cashout from '@src/screens/user/main/Profile/CashOut';
 import Currencies from '@src/screens/user/main/Profile/Currencies';
 import Legal from '@src/screens/user/main/Profile/Legal';
 import Support from '@src/screens/user/main/Profile/Suppoort';
+import QR from '@src/screens/user/main/QR';
 
 const MainStack = createBottomTabNavigator<RootTabParamList>();
 const MainStackTabs = () => {
+  const i18n = useMyI18n();
   return (
     <MainStack.Navigator
       initialRouteName="Home"
@@ -40,8 +43,10 @@ const MainStackTabs = () => {
     >
       <MainStack.Screen
         name="Home"
+        key="Home"
         component={Home}
         options={() => ({
+          tabBarLabel: i18n.t('components.bottomTabs.main.home'),
           // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({ focused }) => (
             <Image
@@ -54,9 +59,11 @@ const MainStackTabs = () => {
       />
       <MainStack.Screen
         name="Account"
+        key="Account"
         component={AccountStack}
         options={() => ({
           // eslint-disable-next-line react/no-unstable-nested-components
+          tabBarLabel: i18n.t('components.bottomTabs.main.account'),
           tabBarIcon: ({ focused }) => (
             <Image
               source={focused ? accountActive : account}
@@ -68,8 +75,10 @@ const MainStackTabs = () => {
       />
       <MainStack.Screen
         name="Card"
+        key="Card"
         component={Card}
         options={() => ({
+          tabBarLabel: i18n.t('components.bottomTabs.main.card'),
           // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({ focused }) => (
             <Image
@@ -85,6 +94,15 @@ const MainStackTabs = () => {
       <MainStack.Screen
         name="Profile"
         component={ProfileStack}
+        options={() => ({
+          // eslint-disable-next-line react/no-unstable-nested-components
+          tabBarStyle: { display: 'none' },
+          tabBarButton: () => null,
+        })}
+      />
+      <MainStack.Screen
+        name="QR"
+        component={QR}
         options={() => ({
           // eslint-disable-next-line react/no-unstable-nested-components
           tabBarStyle: { display: 'none' },

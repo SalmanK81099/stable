@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-const en = {
+const es = {
   screens: {
     user: {
       auth: {
@@ -55,73 +55,32 @@ const en = {
       },
       profile: {
         title: 'Hi ',
-
-        currencies: {
-          title: 'Currencies',
-          step1: {
-            title: 'Current currencies',
-          },
-        },
-        support: { title: 'Support' },
-        legal: { title: 'Legal' },
-        accountInfo: {
+        accountInfo: 'Account Info',
+        cashOut: 'Cash Out',
+        currencies: 'Currencies',
+        support: 'Support',
+        legal: 'Legal',
+        step1: {
           title: 'Account Info',
-          step1: {
-            title: 'Account Info',
-            username: 'Username',
-            email: 'Email',
-            phone: 'Phone number',
-          },
-          step2: {
-            header: 'Change password',
-            title: 'Current password',
-          },
-          step3: {
-            header: 'Change password',
-            title: 'Enter your new password',
-          },
-          step4: {
-            header: 'Change password',
-            title: 'Confirm your password',
-          },
-          step5: {
-            title: 'Your account password was changed',
-            button: 'Back to profile',
-          },
+          username: 'Username',
+          email: 'Email',
+          phone: 'Phone number',
         },
-        cashOut: {
-          title: 'Cash Out',
-          step1: {
-            title: 'How much will you withdrawal?',
-          },
+        step2: {
+          header: 'Change password',
+          title: 'Current password',
         },
-      },
-      account: {
-        movements: {
-          title: 'Movements',
-          step1: {
-            tabs: {
-              all: 'All',
-              moneyAdded: 'Money added',
-              moneySent: 'Money sent',
-            },
-          },
-          step2: {
-            added: 'added',
-            sent: 'sent',
-            received: 'received',
-            withdrawed: 'withdrawed',
-            sentTo: 'Sent to: ',
-            accountNumber: 'Account number: ',
-            timeAndDate: 'Time and date: ',
-            exchangeRate: 'Exchange rate: ',
-          },
+        step3: {
+          header: 'Change password',
+          title: 'Enter your new password',
         },
-        send: {
-          title: 'Send',
+        step4: {
+          header: 'Change password',
+          title: 'Confirm your password',
         },
-        add: {
-          title: 'Add',
+        step5: {
+          title: 'Your account password was changed',
+          button: 'Back to profile',
         },
       },
     },
@@ -130,15 +89,14 @@ const en = {
   components: {
     bottomTabs: {
       main: {
-        home: 'Home',
-        account: 'Account',
-        card: 'Card',
+        home: 'Homeorita',
+        account: 'Accountrita',
+        card: 'Cardrita',
       },
     },
     headers: {
       verification: 'Verification',
       profile: 'Profile',
-      details: 'Details',
     },
     inputs: {
       placeholders: {
@@ -157,7 +115,6 @@ const en = {
       },
       switches: {
         enableFaceId: 'Enable Face ID',
-        freezeCard: 'Freeze card',
       },
       checkboxes: {
         agreeToTerms: 'I agree to the Terms of Service and Privacy Policy',
@@ -182,14 +139,6 @@ const en = {
       greatContinue: "Great, let's continue",
       authenticate: 'Authenticate',
       confirm: 'Confirm',
-      termsAndConditions: 'Terms and Conditions',
-      privacyPolicy: 'Privacy Policy',
-      talkToCoverage: 'Talk to Coverage',
-      faq: 'FAQ',
-      about: 'About ',
-      downloadVoucher: 'Download voucher',
-      blockCard: 'Block card',
-      changeCardPin: 'Change card PIN',
     },
     verifications: {
       phone: {
@@ -214,4 +163,4 @@ const en = {
   },
 };
 
-export { en };
+export { es };

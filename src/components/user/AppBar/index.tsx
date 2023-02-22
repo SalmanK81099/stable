@@ -225,7 +225,11 @@ const AppBar = ({
           HR
         </Text>
       </TouchableOpacity>
-      <Pressable>
+      <Pressable
+        onPress={() => {
+          navigation.navigate('QR' as never);
+        }}
+      >
         {whiteScan ? (
           <WhiteScanner
             style={{

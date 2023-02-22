@@ -3,12 +3,15 @@ import Button from '@src/components/globals/Button';
 import MotiView from '@src/components/globals/MotiView';
 import Screen from '@src/components/globals/Screen';
 import Colors from '@src/constants/Colors';
+import useMyI18n from '@src/hooks/useMyI18n';
 import { getRespValue } from '@utils/design/design';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { AuthProps } from 'types';
 
 const Welcome = ({ navigation }: AuthProps) => {
+  const i18n = useMyI18n();
+
   return (
     <Screen
       className={`bg-[${Colors.light.theme.yellow}]`}
@@ -34,7 +37,7 @@ const Welcome = ({ navigation }: AuthProps) => {
             }}
             className="font-aeonik w-3/4"
           >
-            Welcome to Stable
+            {i18n.t('screens.user.auth.welcome.title')} Stable
           </Text>
           <Text
             style={{
@@ -42,7 +45,7 @@ const Welcome = ({ navigation }: AuthProps) => {
             }}
             className="font-aeonik pt-4 pb-4"
           >
-            Let&apos;s get started!
+            {i18n.t('screens.user.auth.welcome.subtitle')}
           </Text>
         </View>
       </MotiView>
@@ -70,10 +73,10 @@ const Welcome = ({ navigation }: AuthProps) => {
             }}
           />
           <Button onPress={() => navigation.navigate('Signup')}>
-            Create my account
+            {i18n.t('screens.user.auth.welcome.button')}
           </Button>
           <Button light onPress={() => navigation.navigate('Signin')}>
-            Login
+            {i18n.t('components.buttons.login')}
           </Button>
         </MotiView>
       </View>

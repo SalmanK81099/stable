@@ -9,6 +9,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import addIcon from '@assets/icons/user/add.png';
 import movementsIcon from '@assets/icons/user/movements.png';
 import sendIcon from '@assets/icons/user/send.png';
+import useMyI18n from '@src/hooks/useMyI18n';
 
 const Account = ({ navigation }: any) => {
   // useEffect(() => {
@@ -25,6 +26,7 @@ const Account = ({ navigation }: any) => {
   //   })();
   // }, []);
 
+  const i18n = useMyI18n();
   return (
     <ScreenAuth
       whiteScan
@@ -66,7 +68,7 @@ const Account = ({ navigation }: any) => {
               navigation.navigate('Movements');
             }}
           >
-            Movements
+            {i18n.t('screens.user.account.movements.title')}
           </Button>
 
           <Button
@@ -79,7 +81,7 @@ const Account = ({ navigation }: any) => {
               navigation.navigate('Send');
             }}
           >
-            Send
+            {i18n.t('screens.user.account.send.title')}
           </Button>
 
           <Button
@@ -92,7 +94,7 @@ const Account = ({ navigation }: any) => {
               navigation.navigate('Add');
             }}
           >
-            Add
+            {i18n.t('screens.user.account.add.title')}
           </Button>
         </View>
       </View>

@@ -12,6 +12,7 @@ import currenciesIcon from '@assets/icons/user/currencies.png';
 import legalIcon from '@assets/icons/user/legal.png';
 import supportIcon from '@assets/icons/user/support.png';
 import { useIsFocused } from '@react-navigation/native';
+import useMyI18n from '@src/hooks/useMyI18n';
 import Animated, {
   FadeInDown,
   FadeOutUp,
@@ -20,6 +21,7 @@ import Animated, {
 
 const Profile = ({ navigation }: any) => {
   const isFocused = useIsFocused();
+  const i18n = useMyI18n();
   return (
     <ScreenAuth
       appBarProps={{
@@ -47,7 +49,7 @@ const Profile = ({ navigation }: any) => {
                   fontSize: getRespValue(80),
                 }}
               >
-                Hi Eddy
+                {i18n.t('screens.user.profile.title')} Eddy
               </Text>
             </View>
           </View>
@@ -63,7 +65,7 @@ const Profile = ({ navigation }: any) => {
                 navigation.navigate('AccountInfo');
               }}
             >
-              Account info
+              {i18n.t('screens.user.profile.accountInfo.title')}
             </Button>
             <Button
               buttonStyles={{
@@ -75,7 +77,7 @@ const Profile = ({ navigation }: any) => {
                 navigation.navigate('CashOut');
               }}
             >
-              Cash out
+              {i18n.t('screens.user.profile.cashOut.title')}
             </Button>
             <Button
               buttonStyles={{
@@ -87,7 +89,7 @@ const Profile = ({ navigation }: any) => {
                 navigation.navigate('Currencies');
               }}
             >
-              Currencies
+              {i18n.t('screens.user.profile.currencies.title')}
             </Button>
             <Button
               buttonStyles={{
@@ -99,7 +101,7 @@ const Profile = ({ navigation }: any) => {
                 navigation.navigate('Support');
               }}
             >
-              Support
+              {i18n.t('screens.user.profile.support.title')}
             </Button>
             <Button
               buttonStyles={{
@@ -111,7 +113,7 @@ const Profile = ({ navigation }: any) => {
                 navigation.navigate('Legal');
               }}
             >
-              Legal
+              {i18n.t('screens.user.profile.legal.title')}
             </Button>
           </View>
         </Animated.View>

@@ -6,8 +6,10 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import documentsIcon from '@assets/icons/user/documents.png';
+import useMyI18n from '@src/hooks/useMyI18n';
 
 const Legal = () => {
+  const i18n = useMyI18n();
   return (
     <ScreenAuth
       appBarProps={{
@@ -30,7 +32,7 @@ const Legal = () => {
           }}
           className="font-aeonik pl-4 pt-4 pb-8 w-2/4"
         >
-          Legal
+          {i18n.t('screens.user.profile.legal.title')}
         </Text>
 
         <Button
@@ -43,7 +45,7 @@ const Legal = () => {
           //   navigation.navigate('Support');
           // }}
         >
-          Terms and conditions
+          {i18n.t('components.buttons.termsAndConditions')}
         </Button>
 
         <Button
@@ -56,7 +58,7 @@ const Legal = () => {
           //   navigation.navigate('Support');
           // }}
         >
-          Privacy policy
+          {i18n.t('components.buttons.privacyPolicy')}
         </Button>
       </View>
     </ScreenAuth>

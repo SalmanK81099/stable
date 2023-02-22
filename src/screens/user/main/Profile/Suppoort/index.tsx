@@ -8,8 +8,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import aboutIcon from '@assets/icons/user/about.png';
 import coverageIcon from '@assets/icons/user/coverage.png';
 import faqIcon from '@assets/icons/user/faq.png';
+import useMyI18n from '@src/hooks/useMyI18n';
 
 const Support = () => {
+  const i18n = useMyI18n();
+
   return (
     <ScreenAuth
       appBarProps={{
@@ -32,7 +35,7 @@ const Support = () => {
           }}
           className="font-aeonik pl-4 pt-4 pb-8 w-2/4"
         >
-          Support
+          {i18n.t('screens.user.profile.support.title')}
         </Text>
 
         <Button
@@ -45,7 +48,7 @@ const Support = () => {
           //   navigation.navigate('Support');
           // }}
         >
-          Talk to coverage
+          {i18n.t('components.buttons.talkToCoverage')}
         </Button>
 
         <Button
@@ -58,7 +61,7 @@ const Support = () => {
           //   navigation.navigate('Support');
           // }}
         >
-          FAQ
+          {i18n.t('components.buttons.faq')}
         </Button>
 
         <Button
@@ -71,7 +74,8 @@ const Support = () => {
           //   navigation.navigate('Support');
           // }}
         >
-          About Stable
+          {i18n.t('components.buttons.about')}
+          Stable
         </Button>
       </View>
     </ScreenAuth>

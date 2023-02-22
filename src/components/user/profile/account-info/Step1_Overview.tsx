@@ -13,6 +13,7 @@ import PhoneSVG from '@assets/icons/user/profile/call-account-info.svg';
 import EmailSVG from '@assets/icons/user/profile/message-account-info.svg';
 import UserSVG from '@assets/icons/user/profile/user-account-info.svg';
 import { MultiStepFormProps } from '@src/hooks/useMultiStepForm';
+import useMyI18n from '@src/hooks/useMyI18n';
 import { animationConfig } from '@utils/animation/animation';
 import { MotiView } from 'moti';
 
@@ -34,6 +35,8 @@ const DetailRow = ({
 };
 
 const Step1_Overview = ({ next }: MultiStepFormProps) => {
+  const i18n = useMyI18n();
+
   return (
     <MotiView
       style={{
@@ -81,7 +84,7 @@ const Step1_Overview = ({ next }: MultiStepFormProps) => {
               }}
               className="font-aeonik pl-4 pt-4 w-2/4"
             >
-              Account Info
+              {i18n.t('screens.user.profile.accountInfo.step1.title')}
             </Text>
           </MotiView>
         </View>
@@ -92,10 +95,19 @@ const Step1_Overview = ({ next }: MultiStepFormProps) => {
           }}
         >
           <View className="flex-col px-4 ">
-            <DetailRow SVG={UserSVG} text="User name" />
-            <DetailRow SVG={EmailSVG} text="Email" />
+            <DetailRow
+              SVG={UserSVG}
+              text={i18n.t('screens.user.profile.accountInfo.step1.username')}
+            />
+            <DetailRow
+              SVG={EmailSVG}
+              text={i18n.t('screens.user.profile.accountInfo.step1.email')}
+            />
 
-            <DetailRow SVG={PhoneSVG} text="Phone number" />
+            <DetailRow
+              SVG={PhoneSVG}
+              text={i18n.t('screens.user.profile.accountInfo.step1.phone')}
+            />
           </View>
           <MotiView
             key="overview-profile-button"
@@ -120,7 +132,7 @@ const Step1_Overview = ({ next }: MultiStepFormProps) => {
               //   navigation.navigate('Support');
               // }}
             >
-              Change password
+              {i18n.t('components.buttons.changePassword')}
             </Button>
           </MotiView>
         </View>
