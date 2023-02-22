@@ -18,14 +18,14 @@ import * as Yup from 'yup';
 // eslint-disable-next-line camelcase
 type ItemType = {
   // label: string;
-  label: '';
-  value: '';
+  label: string;
+  value: string;
 };
 
 const Account = ({ next }: MultiStepFormProps) => {
   const [toggleIsOn, setToggle] = useState(false);
   const [checkIsOn, setCheck] = useState('off');
-  const [selected, setSelected] = useState<ItemType | undefined>(undefined);
+  const [selected, setSelected] = useState<ItemType[]>([]);
   const data = [
     // { label: 'One', value: '1' },
     // { label: 'Two', value: '2' },

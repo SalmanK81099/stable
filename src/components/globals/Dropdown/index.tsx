@@ -7,12 +7,14 @@ import DropDownPicker from 'react-native-dropdown-picker';
 
 type ItemType = {
   // label: string;
-  item: { label: string; value: string };
+  label: string;
+  value: string;
 };
+
 interface IProps {
   label: string;
   data: Array<{ label: string; value: string }>;
-  onSelect: ItemType;
+  onSelect: React.Dispatch<React.SetStateAction<any[]>>;
   dropdownType: string;
   textColor?: string;
 }
@@ -34,7 +36,7 @@ const Dropdown = (props: IProps) => {
         items={data}
         setOpen={setOpen}
         setValue={setValue}
-        setItems={setItems}
+        setItems={onSelect}
         showTickIcon={false}
         itemSeparator
         itemSeparatorStyle={{
