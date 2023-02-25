@@ -58,7 +58,7 @@ const MainStackTabs = () => {
         })}
       />
       <MainStack.Screen
-        name="Account"
+        name="AccountStack"
         key="Account"
         component={AccountStack}
         options={() => ({
@@ -92,7 +92,7 @@ const MainStackTabs = () => {
 
       {/* Hidden Tab */}
       <MainStack.Screen
-        name="Profile"
+        name="ProfileStack"
         component={ProfileStack}
         options={() => ({
           // eslint-disable-next-line react/no-unstable-nested-components

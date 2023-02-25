@@ -1,43 +1,63 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import BottomSheetDef from '@gorhom/bottom-sheet';
 import React, { useCallback, useMemo } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 
-const BottomSheet = React.forwardRef((props, ref) => {
+interface IBottomSheetProps {
+  OpenerComponent: React.FC<any>;
+  openerProps: any;
+  onPress: () => void;
+  children: React.ReactNode;
+}
+
+const BottomSheet = (props: IBottomSheetProps) => {
+  const { OpenerComponent, openerProps, onPress, children } = props;
+  const [index, setIndex] = React.useState(-1);
   // ref
 
   // variables
-  const snapPoints = useMemo(() => ['50%'], []);
+  const snapPoints = useMemo(() => ['100%'], []);
+  const bottomSheetRef = React.useRef<BottomSheetDef>(null);
 
   // callbacks
-  const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
+  const handleSheetChanges = useCallback((indexLocal: number) => {
+    setIndex(indexLocal);
   }, []);
 
   // renders
   return (
-    <BottomSheetDef
-      enablePanDownToClose
-      index={-1}
-      snapPoints={snapPoints}
-      onChange={handleSheetChanges}
-    >
-      <View style={styles.contentContainer}>
-        <Text>Awesome 🎉</Text>
-      </View>
-    </BottomSheetDef>
-  );
-});
+    <>
+      <OpenerComponent
+        {...openerProps}
+        onPress={() => {
+          bottomSheetRef.current?.collapse();
+          onPress();
+        }}
+      />
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
-    backgroundColor: 'grey',
-  },
-  contentContainer: {
-    flex: 1,
-    alignItems: 'center',
-  },
-});
+      <BottomSheetDef
+        ref={bottomSheetRef}
+        enablePanDownToClose
+        index={-1}
+        snapPoints={snapPoints}
+        onClose={() => {
+          // Keyboard.dismiss();
+        }}
+        onChange={handleSheetChanges}
+        handleComponent={() => (
+          <View className="w-full items-center">
+            <View className="w-14 h-1 bg-white rounded-lg mt-6 mb-4" />
+          </View>
+        )}
+        backgroundStyle={{
+          backgroundColor: '#20201F',
+          borderRadius: 0,
+        }}
+      >
+        {children}
+      </BottomSheetDef>
+    </>
+  );
+};
 
 export default BottomSheet;

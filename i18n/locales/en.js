@@ -124,6 +124,12 @@ const en = {
           title: 'Add',
         },
       },
+      qr: {
+        header: 'My QR',
+        error: {
+          notValid: 'No valid QR code detected',
+        },
+      },
     },
   },
 
@@ -155,13 +161,13 @@ const en = {
         city: 'City',
         state: 'State',
       },
-      switches: {
-        enableFaceId: 'Enable Face ID',
-        freezeCard: 'Freeze card',
-      },
       checkboxes: {
         agreeToTerms: 'I agree to the Terms of Service and Privacy Policy',
       },
+    },
+    switches: {
+      enableFaceId: 'Enable Face ID',
+      freezeCard: 'Freeze card',
     },
     buttons: {
       login: 'Login',
@@ -190,6 +196,7 @@ const en = {
       downloadVoucher: 'Download voucher',
       blockCard: 'Block card',
       changeCardPin: 'Change card PIN',
+      scanQRCode: 'Scan a QR code',
     },
     verifications: {
       phone: {

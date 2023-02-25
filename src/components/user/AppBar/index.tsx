@@ -218,7 +218,7 @@ const AppBar = ({
         }}
         className="bg-[#fff]  rounded-full flex justify-center items-center"
         onPress={() => {
-          navigation.navigate('Profile' as never);
+          navigation.navigate('ProfileStack' as never);
         }}
       >
         <Text className="text-xl font-aeonik-medium font-bold text-gray-800">

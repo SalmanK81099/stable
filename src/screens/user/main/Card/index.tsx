@@ -47,7 +47,7 @@ const Card = ({ navigation }: any) => {
           <Toggle
             onColor="#fff"
             offColor="#fff"
-            label={i18n.t('components.switch.freezeCard')}
+            label={i18n.t('components.switches.freezeCard')}
             toggleStyles={{
               backgroundColor: '#fff',
             }}

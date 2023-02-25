@@ -96,7 +96,7 @@ const Step1_BasicDetails = ({ next }: MultiStepFormProps) => {
             onToggle={() => {
               setToggle(!toggleIsOn);
             }}
-            label={i18n.t('components.inputs.switches.enableFaceId')}
+            label={i18n.t('components.switches.enableFaceId')}
           />
           <Checkbox
             className="mt-auto"

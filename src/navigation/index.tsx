@@ -22,8 +22,8 @@ const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
       // theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
     >
       {/* {user == null && <Loading />} */}
-      {user === false && <Auth />}
-      {user === true && <MainStackTabs />}
+      {!user && <Auth />}
+      {user && <MainStackTabs />}
 
       <Stack.Screen
         name="NotFound"

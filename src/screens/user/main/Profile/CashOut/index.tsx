@@ -1,3 +1,4 @@
+import Dropdown from '@src/components/globals/Dropdown';
 import ScreenAuth from '@src/components/globals/ScreenAuth';
 import Colors from '@src/constants/Colors';
 import useMyI18n from '@src/hooks/useMyI18n';
@@ -35,10 +36,30 @@ const CashOut = () => {
       <View
         className={`bg-[${Colors.light.background}] flex-1 justify-between`}
         style={{
-          backgroundColor: Colors.light.background,
+          backgroundColor: Colors.light.theme.backgroundDarkGray,
         }}
       >
-        <Text>Test</Text>
+        <Dropdown
+          label="Currency"
+          data={[
+            {
+              label: 'BNI',
+              value: 'bni',
+            },
+            {
+              label: 'BRI',
+              value: 'bri',
+            },
+          ]}
+          onSelect={() => {
+            console.log('onSelect');
+          }}
+          dropdownType="sm"
+          textColor={Colors.light.textYellow}
+          labelStyle={{
+            color: Colors.light.textYellow,
+          }}
+        />
       </View>
     </ScreenAuth>
   );
