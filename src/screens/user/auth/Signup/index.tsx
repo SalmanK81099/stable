@@ -11,12 +11,16 @@ import { StyleSheet } from 'react-native';
 import { AuthProps } from 'types';
 
 const Signup = ({ navigation }: AuthProps) => {
-  const { step } = useMultistepForm([
+  const { step, goTo } = useMultistepForm([
     <Step1_BasicDetails />,
     <Step2_OTP />,
     <Step3_OTPEmail />,
     <Step4_Done />,
   ]);
+
+  // useEffect(() => {
+  //   goTo(3);
+  // }, []);
 
   return <AnimatePresence exitBeforeEnter>{step}</AnimatePresence>;
 };

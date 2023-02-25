@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable camelcase */
 import backgroundImage from '@assets/images/background1.png';
+import { useNavigation } from '@react-navigation/native';
 import Button from '@src/components/globals/Button';
 import MotiView from '@src/components/globals/MotiView';
 import Screen from '@src/components/globals/Screen';
@@ -13,6 +14,8 @@ import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 const Step4_Done = () => {
   const i18n = useMyI18n();
+  const navigation = useNavigation();
+
   return (
     <Screen
       className={`bg-[${Colors.light.theme.yellow}]`}
@@ -55,7 +58,13 @@ const Step4_Done = () => {
               translateY: -100,
             }}
           >
-            <Button>{i18n.t('components.buttons.greatContinue')}</Button>
+            <Button
+              onPress={() => {
+                navigation.navigate('KYC' as never);
+              }}
+            >
+              {i18n.t('components.buttons.greatContinue')}
+            </Button>
           </MotiView>
         </View>
       </ImageBackground>

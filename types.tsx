@@ -43,6 +43,7 @@ export type AuthStackParamList = {
   Signin: undefined;
   Signup: undefined;
   ForgotPassword: undefined;
+  KYC: undefined;
 };
 
 export interface AuthProps {

@@ -1,7 +1,9 @@
 /* eslint-disable import/extensions */
 /* eslint-disable global-require */
+import idFront from '@assets/images/kyc/background-id-front.jpg';
 import { FontAwesome } from '@expo/vector-icons';
 import { setLocal } from '@store/slices/userSlice';
+import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import { locale } from 'expo-localization';
 import * as SplashScreen from 'expo-splash-screen';
@@ -12,6 +14,17 @@ const useCachedResources = () => {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
   const dispatch = useDispatch();
   // Load any resources or data that we need prior to rendering the app
+
+  const cacheImageResources = async () => {
+    const images: string[] = [idFront];
+
+    const cacheImages = images.map((image: string) => {
+      return Asset.fromModule(image).downloadAsync();
+    });
+
+    return Promise.all(cacheImages);
+  };
+
   useEffect(() => {
     async function loadResourcesAndDataAsync() {
       try {
@@ -28,6 +41,8 @@ const useCachedResources = () => {
           aeonik: require('@assets/fonts/Aeonik/Aeonik-Regular.otf'),
           'aeonik-thin': require('@assets/fonts/Aeonik/Aeonik-Thin.otf'),
         });
+
+        await cacheImageResources();
       } catch (e) {
         // We might want to provide this error information to an error reporting service
         console.warn(e);

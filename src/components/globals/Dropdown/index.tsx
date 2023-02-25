@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import ArrowDownSVG from '@assets/icons/kyc/arrow-down-yellow.svg';
 import Colors from '@src/constants/Colors';
 import { getRespValue } from '@utils/design/design';
 import React, { useState } from 'react';
@@ -44,8 +45,8 @@ const Dropdown = (props: IProps) => {
         value={value}
         items={data}
         setOpen={setOpen}
+        onSelectItem={onSelect}
         setValue={setValue}
-        setItems={onSelect}
         showTickIcon={false}
         itemSeparator
         itemSeparatorStyle={{
@@ -77,7 +78,7 @@ const Dropdown = (props: IProps) => {
           borderWidth: 0,
         }}
         placeholderStyle={{
-          color: Colors.light.theme.textDarkGray,
+          color: 'white',
           fontWeight: '400',
           fontSize: getRespValue(28),
           fontFamily: 'aeonik',
@@ -103,6 +104,7 @@ const Dropdown = (props: IProps) => {
         value={value}
         items={data}
         setOpen={setOpen}
+        onSelectItem={onSelect}
         setValue={setValue}
         setItems={setItems}
         showTickIcon={false}
@@ -111,7 +113,7 @@ const Dropdown = (props: IProps) => {
         itemSeparatorStyle={{
           height: 1,
           width: '100%',
-          backgroundColor: Colors.light.lineYellow,
+          backgroundColor: Colors.light.theme.buttonOrange,
         }}
         labelStyle={{
           color: '#FFFFFF',
@@ -122,22 +124,25 @@ const Dropdown = (props: IProps) => {
         dropDownContainerStyle={{
           backgroundColor: Colors.light.theme.yellow,
           // zIndex: 999,
-          borderColor: Colors.light.lineYellow,
+          // borderColor: Colors.light.lineYellow,
           borderBottomRightRadius: 0,
           borderBottomLeftRadius: 0,
         }}
         style={{
           backgroundColor: 'none',
           borderColor: '#626262',
+          height: getRespValue(70),
           borderBottomWidth: 1,
           borderTopWidth: 1,
+          borderLeftWidth: 0,
+          borderRightWidth: 0,
           borderTopRightRadius: 0,
           borderTopLeftRadius: 0,
           borderBottomRightRadius: 0,
           borderBottomLeftRadius: 0,
         }}
         placeholderStyle={{
-          color: textColor,
+          color: 'white',
           fontWeight: '400',
           fontSize: getRespValue(21),
           fontFamily: 'aeonik',
@@ -152,10 +157,16 @@ const Dropdown = (props: IProps) => {
         listItemContainerStyle={{
           backgroundColor: Colors.light.theme.yellow,
           shadowColor: Colors.light.theme.yellow,
+          height: getRespValue(70),
         }}
         arrowIconStyle={{}}
         arrowIconContainerStyle={{
           borderColor: 'red',
+        }}
+        ArrowDownIconComponent={ArrowDownSVG}
+        ArrowUpIconComponent={ArrowDownSVG}
+        selectedItemContainerStyle={{
+          backgroundColor: Colors.light.theme.backgroundDarkYellow,
         }}
       />
     );
@@ -165,7 +176,7 @@ const Dropdown = (props: IProps) => {
   return <></>;
 };
 Dropdown.defaultProps = {
-  textColor: Colors.light.theme.black,
+  textColor: Colors.light.theme.textLightGray,
   labelStyle: {},
 };
 

@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import AppBar, { AppBarProps } from '@src/components/user/AppBar';
 import React from 'react';
 import {
   ScrollView,
@@ -12,11 +13,22 @@ interface Props extends ViewProps {
   scroll?: boolean;
   topColor?: string;
   bottomColor?: string;
+  appBar?: boolean;
+  appBarProps?: AppBarProps;
 }
 
 const Screen = (props: Props) => {
-  const { style, topColor, bottomColor, scroll, className, children, ...rest } =
-    props;
+  const {
+    style,
+    topColor,
+    bottomColor,
+    scroll,
+    className,
+    children,
+    appBarProps,
+    appBar,
+    ...rest
+  } = props;
 
   if (scroll)
     return (
@@ -44,6 +56,8 @@ const Screen = (props: Props) => {
           style={{ flex: 1, ...(style as object) }}
           className={className}
         >
+          {appBar && <AppBar {...appBarProps} />}
+
           {children}
         </ViewDef>
       </SafeAreaView>
@@ -55,6 +69,8 @@ Screen.defaultProps = {
   scroll: false,
   topColor: '#000',
   bottomColor: '#000',
+  appBar: false,
+  appBarProps: {},
 };
 
 export default Screen;

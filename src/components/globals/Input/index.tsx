@@ -50,7 +50,7 @@ const Input = (props: MyTextInputProps) => {
         value ? 'font-aeonik' : 'font-aeonik-light font-extralight'
       } ${error ? 'bg-red-400' : ''} ${className}`}
       secureTextEntry={password ? !!checked : false}
-      right={handleRightValues() as React.ReactFragment}
+      right={right || (handleRightValues() as React.ReactFragment)}
     />
   );
 };
