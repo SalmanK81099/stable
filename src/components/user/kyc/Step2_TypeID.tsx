@@ -11,6 +11,9 @@ import { MotiView } from 'moti';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const netkiSDK = require('@netki/netki-mobilesdk').default;
+
 const Step2_TypeID = ({ back, next }: MultiStepFormProps) => {
   const [selectedItem, setSelectedItem] = useState(null);
   return (
@@ -119,7 +122,23 @@ const Step2_TypeID = ({ back, next }: MultiStepFormProps) => {
               bottom: getRespValue(30),
             }}
           >
-            <Button onPress={() => next && next()}>Submit</Button>
+            <Button
+              onPress={() => {
+                netkiSDK.configureToken(
+                  '42db6773521fff88c1ba07d84b83dd6bbc94a5ee',
+                  res => {
+                    console.log('success', res);
+                    console.log('selectedItem', selectedItem);
+                    netkiSDK.setDocumentType(selectedItem);
+                    // netkiSDK.enableLivenessDetection(true);
+                    if (next) next();
+                  },
+                  res => console.log('error', res),
+                );
+              }}
+            >
+              Submit
+            </Button>
           </MotiView>
         )}
       </View>

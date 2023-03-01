@@ -35,7 +35,8 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-community-flipper"
+      "expo-community-flipper",
+      "@netki/netki-mobilesdk"
     ],
     "extra": {
       "eas": {

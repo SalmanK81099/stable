@@ -15,7 +15,7 @@ import MainStackTabs from './user/MainStack';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
-  const user = false;
+  const user = true;
   return (
     <NavigationContainer
       linking={userLinking}

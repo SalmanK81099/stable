@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable camelcase */
-import idFront from '@assets/images/kyc/background-id-front.jpg';
+import idFront from '@assets/images/kyc/background-id-back.jpg';
 import Button from '@src/components/globals/Button';
 import Screen from '@src/components/globals/Screen';
 import Colors from '@src/constants/Colors';
@@ -14,7 +14,7 @@ import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const netkiSDK = require('@netki/netki-mobilesdk').default;
 
-const Step4_IDFront1 = ({ back, next }: MultiStepFormProps) => {
+const Step5_IDBack1 = ({ back, next }: MultiStepFormProps) => {
   const [cca2, setCca2] = useState('CO');
   const [visible, setVisible] = useState(false);
   return (
@@ -27,7 +27,7 @@ const Step4_IDFront1 = ({ back, next }: MultiStepFormProps) => {
           if (back) back();
         },
         stepper: true,
-        stepActive: 3,
+        stepActive: 4,
         profileColor: Colors.light.theme.backgroundLightYellow,
         disableStartMoti: true,
         disableEndMoti: true,
@@ -132,6 +132,6 @@ const Step4_IDFront1 = ({ back, next }: MultiStepFormProps) => {
   );
 };
 
-export default Step4_IDFront1;
+export default Step5_IDBack1;
 
 const styles = StyleSheet.create({});

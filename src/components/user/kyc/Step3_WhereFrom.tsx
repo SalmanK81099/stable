@@ -16,6 +16,8 @@ import CountryPicker, {
 } from 'react-native-country-picker-modal';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { TextInput } from 'react-native-paper';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const netkiSDK = require('@netki/netki-mobilesdk').default;
 
 const Step3_WhereFrom = ({ back, next }: MultiStepFormProps) => {
   const [cca2, setCca2] = useState('CO');
@@ -131,7 +133,15 @@ const Step3_WhereFrom = ({ back, next }: MultiStepFormProps) => {
               bottom: getRespValue(30),
             }}
           >
-            <Button className=" w-11/12" onPress={() => next && next()}>
+            <Button
+              className=" w-11/12"
+              onPress={() => {
+                console.log('cca2', cca2);
+                netkiSDK.setCountry(cca2?.toLocaleLowerCase());
+
+                if (next) next();
+              }}
+            >
               Submit
             </Button>
           </MotiView>

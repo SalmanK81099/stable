@@ -5,6 +5,7 @@ import Step1_LetsMeet from '@src/components/user/kyc/Step1_LetsMeet';
 import Step2_TypeID from '@src/components/user/kyc/Step2_TypeID';
 import Step3_WhereFrom from '@src/components/user/kyc/Step3_WhereFrom';
 import Step4_IDFront1 from '@src/components/user/kyc/Step4_IDFront1';
+import Step5_IDBack1 from '@src/components/user/kyc/Step5_IDBack1';
 import useMultistepForm from '@src/hooks/useMultiStepForm';
 import { AnimatePresence } from 'moti';
 import React from 'react';
@@ -17,6 +18,7 @@ const KYC = ({ navigation }: AuthProps) => {
     <Step2_TypeID />,
     <Step3_WhereFrom />,
     <Step4_IDFront1 />,
+    <Step5_IDBack1 />,
   ]);
 
   return <AnimatePresence exitBeforeEnter>{step}</AnimatePresence>;
