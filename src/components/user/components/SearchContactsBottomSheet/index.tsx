@@ -7,21 +7,18 @@ import Button from '@src/components/globals/Button';
 import Colors from '@src/constants/Colors';
 import { getRespValue } from '@utils/design/design';
 import * as Contacts from 'expo-contacts';
-import * as Linking from 'expo-linking';
 import { debounce } from 'lodash';
 import React, { useCallback, useEffect, useState } from 'react';
 import {
-  FlatList,
-  KeyboardAvoidingView,
-  Platform,
+  ActivityIndicator,
+  Linking,
+  Pressable,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { TextInput } from 'react-native-paper';
-
-const PAGE_SIZE = 10;
 
 const ContactRow = ({ item }: { item: Contacts.Contact }) => {
   return (
@@ -84,12 +81,13 @@ const ContactRow = ({ item }: { item: Contacts.Contact }) => {
 const BottomSheetButtonOTP = (props: any) => {
   const { title } = props;
   const [searchQuery, setSearchQuery] = useState('');
-  const [contactsData, setContactsData] = useState<Contacts.Contact[]>([]);
+
   const [filteredContactsData, setFilteredContactsData] = useState<
     Contacts.Contact[]
   >([]);
   const [contactPermission, setContactPermission] = useState(false);
   const [pageOffset, setPageOffset] = useState(0);
+  const [pageOffsetForSearch, setPageOffsetForSearch] = useState(0);
 
   const setContactPermissionAsync = useCallback(async () => {
     const { status, expires } = await Contacts.requestPermissionsAsync();
@@ -103,44 +101,42 @@ const BottomSheetButtonOTP = (props: any) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const searchContacts = useCallback(
-    debounce((query: string) => {
+    debounce(async (query: string) => {
       if (query.trim().length > 0) {
-        const regex = new RegExp(
-          `^${query
-            .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-            .replace(/ /g, '\\s*')}`,
-          'i',
-        );
-        const filtered = contactsData.filter(
+        const { data } = await Contacts.getContactsAsync({
+          pageSize: 20,
+          name: query,
+          pageOffset: pageOffsetForSearch,
+
+          fields: [
+            Contacts.Fields.FirstName,
+            Contacts.Fields.LastName,
+            Contacts.Fields.Name,
+            Contacts.Fields.PhoneNumbers,
+          ],
+        });
+        const filtered = data.filter(
           (contact: Contacts.Contact) =>
-            contact.name.toLowerCase().includes(query.toLowerCase()) ||
-            (contact.phoneNumbers &&
-              contact.phoneNumbers.some(({ number }) =>
-                regex.test(number || ''),
-              )),
+            contact?.firstName?.toLowerCase().includes(query.toLowerCase()) ||
+            contact?.lastName?.toLowerCase().includes(query.toLowerCase()),
         );
-        setFilteredContactsData(filtered);
-      } else {
-        setFilteredContactsData(contactsData);
+
+        if (data.length > 0) {
+          setFilteredContactsData(filtered);
+        }
       }
     }, 500),
-    [contactsData],
-  );
-
-  const handleSearchQueryChange = useCallback(
-    (query: string) => {
-      setSearchQuery(query);
-      searchContacts(query);
-    },
-    [searchContacts],
+    [filteredContactsData, setFilteredContactsData],
   );
 
   useEffect(() => {
     (async () => {
-      const { status } = await setContactPermissionAsync();
+      const { status } = await Contacts.requestPermissionsAsync();
       if (status === 'granted') {
         setContactPermission(true);
         const { data } = await Contacts.getContactsAsync({
+          pageSize: 20,
+          pageOffset,
           fields: [
             Contacts.Fields.FirstName,
             Contacts.Fields.LastName,
@@ -150,9 +146,7 @@ const BottomSheetButtonOTP = (props: any) => {
         });
 
         if (data.length > 0) {
-          setContactsData(data);
-          console.log(data);
-          setFilteredContactsData(data);
+          setFilteredContactsData([...filteredContactsData, ...data]);
         }
       } else {
         setContactPermission(false);
@@ -160,74 +154,84 @@ const BottomSheetButtonOTP = (props: any) => {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageOffset]);
-
+  const handleLoadMore = () => {
+    if (!(searchQuery.length > 0)) {
+      setPageOffset(pageOffset + 20);
+    } else {
+      setPageOffsetForSearch(pageOffsetForSearch + 20);
+    }
+  };
+  const handleSearchQueryChange = useCallback(
+    (query: string) => {
+      setSearchQuery(query);
+      searchContacts(query);
+    },
+    [searchContacts],
+  );
   // renders
   return (
     <BottomSheet
       openerProps={{}}
       onPress={() => {
         console.log('pressed');
+        setContactPermissionAsync();
       }}
       OpenerComponent={propsInner => (
-        <TouchableOpacity {...propsInner}>
+        <Pressable {...propsInner}>
           <Input
+            {...propsInner}
             placeholder="Search in my contacts"
             editable={false}
+            selectTextOnFocus={false}
             style={{
               backgroundColor: Colors.light.theme.backgroundDarkPink,
             }}
-            right={<TextInput.Icon icon="magnify" />}
+            right={<TextInput.Icon icon="magnify" {...propsInner} />}
           />
-        </TouchableOpacity>
+        </Pressable>
       )}
     >
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 40}
-        className="flex-1 items-left justify-start"
-      >
-        {contactPermission ? (
-          <>
-            <Input
-              placeholder="Search in my contacts"
-              style={{
-                backgroundColor: Colors.light.theme.backgroundDarkGray,
-                borderTopWidth: 2,
-                borderColor: Colors.light.theme.backgroundLightGray,
-              }}
-              textColor="white"
-              value={searchQuery}
-              onChangeText={handleSearchQueryChange}
-              right={<TextInput.Icon icon="magnify" />}
+      {contactPermission ? (
+        <>
+          <Input
+            placeholder="Search in my contacts"
+            style={{
+              backgroundColor: Colors.light.theme.backgroundDarkGray,
+              borderTopWidth: 2,
+              borderColor: Colors.light.theme.backgroundLightGray,
+            }}
+            textColor="white"
+            onChangeText={handleSearchQueryChange}
+            right={<TextInput.Icon icon="magnify" />}
+          />
+          <Text className="px-4 py-4 text-white font-aeonik">Contacts</Text>
+          <View className="flex-1 justify-between">
+            <FlatList
+              data={filteredContactsData}
+              renderItem={ContactRow}
+              keyExtractor={item => item.id}
+              onEndReached={handleLoadMore}
+              ListFooterComponent={() => (
+                <ActivityIndicator size="large" color="#0000ff" />
+              )}
+              onEndReachedThreshold={0.5}
             />
-            <Text className="px-4 py-4 text-white font-aeonik">Contacts</Text>
-            <View className="flex-1 justify-between">
-              <FlatList
-                data={filteredContactsData}
-                renderItem={ContactRow}
-                keyExtractor={item => item.id}
-                onEndReached={() => {
-                  setPageOffset(pageOffset + 1);
-                }}
-                onEndReachedThreshold={0.5}
-              />
-            </View>
-          </>
-        ) : (
-          <View>
-            <Text className="text-white text-center font-aeonik my-4 px-4 text-lg">
-              Please allow permissions to access contacts
-            </Text>
-            <Button
-              onPress={() => {
-                Linking.openSettings();
-              }}
-            >
-              Allow Permissions
-            </Button>
           </View>
-        )}
-      </KeyboardAvoidingView>
+        </>
+      ) : (
+        <View>
+          <Text className="text-white text-center font-aeonik my-4 px-4 text-lg">
+            Please allow permissions to access contacts
+          </Text>
+          <Button
+            onPress={() => {
+              Linking.openSettings();
+            }}
+          >
+            Allow Permissions
+          </Button>
+        </View>
+      )}
     </BottomSheet>
   );
 };
